@@ -39,11 +39,11 @@ around 5–10 minutes.
 ---
 
 All assets were made during the jam except:
-- Alagard Font from Hewett Tsoi
-- The Level (and Page) Sky Background by ansimuz
-- UI from Kenney Assets
-- Sounds from GDC Audio Bundles 2017 and FreeSound.org
-- Music from FreeSound.org
+- Alagard Font from [Hewett Tsoi](https://www.dafont.com/alagard.font)
+- The Level (and Page) Sky Background by [ansimuz](https://opengameart.org/content/mountain-at-dusk-background)
+- UI from [Kenney Assets](https://kenney.nl/assets/tag:interface?sort=update)
+- Sounds from [GDC Audio Bundles 2017](https://sonniss.com/gameaudiogdc) and [FreeSound.org](https://freesound.org/)
+- Music from [FreeSound.org](https://freesound.org/)
 All of which are licensed under Creative Commons 0
 
 ---
