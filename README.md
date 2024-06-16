@@ -1,14 +1,14 @@
-### Play the game on itch.io
+# Play the game on itch.io
 
 **https://ven-studios.itch.io/last-seige**
 
----
-
 ### This is the source code for the game, you can see all the scripts, assets, and scenes of the game.
+
+---
 
 ![Cover Image](https://github.com/VenStudio/Last-Siege/assets/87476532/15a2c284-a4db-42ce-87db-7a20c0a67688)
 
-# Made for GameDev.tv Game Jam 2024
+### Made for GameDev.tv Game Jam 2024
 
 Last Siege is a 2D Side-View Tower-Defense Game where you must defend the Alabese Fortress from its demise.
 
