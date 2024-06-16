@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://rq2sctmwt3cc"]
+
+[ext_resource type="PackedScene" uid="uid://doanayot54nxa" path="res://Scenes/trap.tscn" id="1_ynmi1"]
+[ext_resource type="Script" path="res://Scripts/Spike.gd" id="2_mhevu"]
+[ext_resource type="Texture2D" uid="uid://le5osp021477" path="res://Assets/Sprites/Trap Spikes.png" id="3_bysl3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1krk0"]
+size = Vector2(155, 111.667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yjr7"]
+size = Vector2(46.6667, 93.75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b14t"]
+atlas = ExtResource("3_bysl3")
+region = Rect2(64, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il07w"]
+atlas = ExtResource("3_bysl3")
+region = Rect2(96, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vtus"]
+atlas = ExtResource("3_bysl3")
+region = Rect2(32, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toi6u"]
+atlas = ExtResource("3_bysl3")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8e8pm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b14t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il07w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vtus")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toi6u")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swwjf"]
+atlas = ExtResource("3_bysl3")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1hblq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swwjf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Spike" instance=ExtResource("1_ynmi1")]
+script = ExtResource("2_mhevu")
+damage = 9
+_spacing = null
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -85)
+
+[node name="Damage Area" type="Area2D" parent="." index="2"]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Area" index="0"]
+position = Vector2(-2.5, -25.8333)
+shape = SubResource("RectangleShape2D_1krk0")
+
+[node name="Detect Enemies Area" type="Area2D" parent="." index="3"]
+position = Vector2(-141.667, 0)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detect Enemies Area" index="0"]
+position = Vector2(98.3333, -34.7917)
+shape = SubResource("RectangleShape2D_6yjr7")
+
+[node name="AnimatedSprite2D" parent="." index="4"]
+z_index = 2
+position = Vector2(0, -90)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_8e8pm")
+animation = &"Idle"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="AnimatedSprite2D" index="0"]
+show_behind_parent = true
+sprite_frames = SubResource("SpriteFrames_1hblq")
+
+[node name="Timer" type="Timer" parent="." index="5"]
+wait_time = 4.0
+
+[node name="Spike Activate Audio" type="AudioStreamPlayer2D" parent="." index="9"]
+panning_strength = 0.0
+
+[connection signal="area_entered" from="Damage Area" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Damage Area" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Detect Enemies Area" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Detect Enemies Area" to="." method="_on_detect_enemies_area_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

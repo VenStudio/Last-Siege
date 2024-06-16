@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://clbyea65j5885"]
+
+[ext_resource type="FontFile" uid="uid://b6btjltaqm0o5" path="res://Assets/alagard.ttf" id="1_j2r5r"]
+[ext_resource type="Script" path="res://Scripts/Navigation Button.gd" id="1_nykjt"]
+
+[node name="Navigation Button" type="Button"]
+offset_left = 25.0
+offset_top = 300.0
+offset_right = 45.0
+offset_bottom = 350.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_j2r5r")
+text = "<"
+script = ExtResource("1_nykjt")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

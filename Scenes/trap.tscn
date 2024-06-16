@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://doanayot54nxa"]
+
+[ext_resource type="Script" path="res://Scripts/Trap.gd" id="1_cd8wb"]
+[ext_resource type="Texture2D" uid="uid://djd1mvxw5apgr" path="res://icon.svg" id="1_uch4c"]
+[ext_resource type="AudioStream" uid="uid://b5xrgna3j1tfc" path="res://Assets/Audio/Place Trap.wav" id="3_uipl4"]
+[ext_resource type="AudioStream" uid="uid://bj685csolta2h" path="res://Assets/Audio/Remove Trap.wav" id="4_wr16i"]
+[ext_resource type="AudioStream" uid="uid://c2hx2m1jdakul" path="res://Assets/Audio/Cancel placing.wav" id="5_dbuuc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g1gl"]
+size = Vector2(60, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vmou"]
+size = Vector2(60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yxcej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uch4c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Trap" type="AnimatableBody2D"]
+scale = Vector2(0.6, 0.6)
+collision_layer = 8
+script = ExtResource("1_cd8wb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0g1gl")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_7vmou")
+target_position = Vector2(0, 0)
+collision_mask = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yxcej")
+
+[node name="Trap Placed Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_uipl4")
+panning_strength = 0.0
+bus = &"Sounds"
+
+[node name="Trap Sold Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_wr16i")
+panning_strength = 0.0
+bus = &"Sounds"
+
+[node name="Trap Place Canceled Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_dbuuc")
+panning_strength = 0.0
+bus = &"Sounds"

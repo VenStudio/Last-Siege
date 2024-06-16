@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cro0nuos48r64"]
+
+[ext_resource type="Texture2D" uid="uid://20qj0ud5gxo6" path="res://Assets/Sprites/Bow.png" id="1_ofroc"]
+[ext_resource type="Texture2D" uid="uid://ds57velhefot3" path="res://Assets/Sprites/Player.png" id="1_qfip8"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_sa3pd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5513"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qfip8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_sa3pd")
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v5513")
+
+[node name="Weapon" type="Sprite2D" parent="."]
+position = Vector2(4, 0)
+texture = ExtResource("1_ofroc")
+
+[node name="Fire Rate" type="Timer" parent="."]
+
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]

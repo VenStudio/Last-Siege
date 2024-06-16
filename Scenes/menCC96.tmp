@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhl8i7oxsnsek"]
+
+[ext_resource type="FontFile" uid="uid://b6btjltaqm0o5" path="res://Assets/alagard.ttf" id="1_cwhtu"]
+[ext_resource type="Texture2D" uid="uid://c6ki4hcavotfm" path="res://Assets/Sprites/UI Kit/Panel/panel-008.png" id="2_j0bl7"]
+[ext_resource type="Script" path="res://Scripts/menu_button.gd" id="3_sc8s3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eoi7e"]
+texture = ExtResource("2_j0bl7")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(0.81, 0.822, 0.9, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q71qx"]
+texture = ExtResource("2_j0bl7")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ge26l"]
+texture = ExtResource("2_j0bl7")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="Menu Button" type="Button"]
+custom_minimum_size = Vector2(0, 50)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_cwhtu")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_eoi7e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q71qx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ge26l")
+text = "Button"
+script = ExtResource("3_sc8s3")
+load_scene = null
+unload_scenes = null
+time_scale = null
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

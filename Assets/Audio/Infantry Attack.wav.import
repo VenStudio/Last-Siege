@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bwey13t4rjbue"
+path="res://.godot/imported/Infantry Attack.wav-319fc7e31e79f3b3d1c5e806b1d63ea2.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Infantry Attack.wav"
+dest_files=["res://.godot/imported/Infantry Attack.wav-319fc7e31e79f3b3d1c5e806b1d63ea2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

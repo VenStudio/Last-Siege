@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dt0m432ryw2c4"
+path="res://.godot/imported/Wave Complete.wav-751facc1784475c8da4fbff7c523ee59.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Wave Complete.wav"
+dest_files=["res://.godot/imported/Wave Complete.wav-751facc1784475c8da4fbff7c523ee59.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

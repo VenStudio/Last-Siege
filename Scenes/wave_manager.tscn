@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnnmxjpmdocgu"]
+
+[ext_resource type="Script" path="res://Scripts/wave_manager.gd" id="1_jqncc"]
+[ext_resource type="AudioStream" uid="uid://bc6i7njb8qow7" path="res://Assets/Audio/Wave Start.wav" id="2_gv52g"]
+[ext_resource type="AudioStream" uid="uid://dt0m432ryw2c4" path="res://Assets/Audio/Wave Complete.wav" id="3_kgdwp"]
+
+[node name="Wave Manager" type="Node2D"]
+script = ExtResource("1_jqncc")
+spawn_margin = 50
+
+[node name="Wave Start Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_gv52g")
+panning_strength = 0.0
+bus = &"Sounds"
+
+[node name="Wave Complete Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kgdwp")
+panning_strength = 0.0
+bus = &"Sounds"

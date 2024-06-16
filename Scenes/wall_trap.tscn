@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://dy3xndycbgo3w"]
+
+[ext_resource type="PackedScene" uid="uid://doanayot54nxa" path="res://Scenes/trap.tscn" id="1_jxk85"]
+[ext_resource type="Script" path="res://Scripts/wall.gd" id="2_7gm5t"]
+[ext_resource type="Texture2D" uid="uid://ctiokp7tgb1pg" path="res://Assets/Sprites/Trap Wall.png" id="3_ofpcc"]
+[ext_resource type="Texture2D" uid="uid://d62cml6q3e8" path="res://Assets/Sprites/UI Kit/Transparent center/panel-transparent-center-015.png" id="4_8os47"]
+[ext_resource type="Texture2D" uid="uid://bot11mqwsx7ld" path="res://Assets/Sprites/UI Kit/Border/panel-border-015.png" id="5_4vn4u"]
+[ext_resource type="Texture2D" uid="uid://e876hmqu6o33" path="res://Assets/Sprites/UI Kit/Panel/panel-015.png" id="6_cbm37"]
+[ext_resource type="AudioStream" uid="uid://dlht6663moy0s" path="res://Assets/Audio/Wall Broken.wav" id="7_4h7j1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8e8pm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ofpcc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Wall" node_paths=PackedStringArray("health_bar") instance=ExtResource("1_jxk85")]
+script = ExtResource("2_7gm5t")
+health = 50
+caslte = false
+health_bar = NodePath("Wall Health Bar")
+game_over_scene = null
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -85)
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(0, -90)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_8e8pm")
+
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 0.1
+
+[node name="Wall Health Bar" type="TextureProgressBar" parent="." index="4"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 40.0
+offset_right = 240.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("4_8os47")
+texture_over = ExtResource("5_4vn4u")
+texture_progress = ExtResource("6_cbm37")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(1, 0.533333, 0, 1)
+
+[node name="Wall Broken" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("7_4h7j1")
+panning_strength = 0.0
+bus = &"Sounds"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

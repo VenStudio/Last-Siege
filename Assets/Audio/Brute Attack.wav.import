@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bl7iy7xeq3jus"
+path="res://.godot/imported/Brute Attack.wav-de944e90f2d9dd5d3f6235ff60aeef88.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Brute Attack.wav"
+dest_files=["res://.godot/imported/Brute Attack.wav-de944e90f2d9dd5d3f6235ff60aeef88.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

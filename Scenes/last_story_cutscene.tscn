@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://2ysyvl1wpu5o"]
+
+[ext_resource type="FontFile" uid="uid://b6btjltaqm0o5" path="res://Assets/alagard.ttf" id="1_3fbgs"]
+[ext_resource type="PackedScene" uid="uid://bhl8i7oxsnsek" path="res://Scenes/menu_button.tscn" id="1_v73qf"]
+[ext_resource type="AudioStream" uid="uid://d3bn04xnr5jdb" path="res://Assets/Audio/Outro Cutscene.wav" id="3_q1prs"]
+
+[sub_resource type="Animation" id="Animation_reqr0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu Button:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0236967]
+}
+
+[sub_resource type="Animation" id="Animation_2bycy"]
+resource_name = "typing_text_effect"
+length = 14.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu Button:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 4, 4.5, 7, 7.5, 10, 10.5, 12, 13, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0236967, 0.0236967, 0.386256, 0.386256, 0.773697, 0.773697, 0.945498, 0.945498, 0.983412, 0.983412, 1.06635]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2q84u"]
+_data = {
+"RESET": SubResource("Animation_reqr0"),
+"typing_text_effect": SubResource("Animation_2bycy")
+}
+
+[node name="Last Story Cutscene" type="Camera2D"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = -324.0
+offset_right = 577.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_2q84u")
+}
+autoplay = "typing_text_effect"
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="Panel/CenterContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/line_separation = 5
+theme_override_fonts/normal_font = ExtResource("1_3fbgs")
+text = "To Abalise Fortress,
+Bla Bla Bla...
+New kingdom here babyyyyy
+
+Thanks For Playing!
+
+General Aldric"
+fit_content = true
+visible_characters = 2
+visible_characters_behavior = 1
+visible_ratio = 0.0236967
+
+[node name="Menu Button" parent="Panel" instance=ExtResource("1_v73qf")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -93.5
+offset_top = -93.0
+offset_right = 174.5
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+text = "Exit Game"
+functionality = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_q1prs")
+autoplay = true
+panning_strength = 0.0
+bus = &"Sounds"

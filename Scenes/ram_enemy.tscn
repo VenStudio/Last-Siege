@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://ldpupf01dk5p"]
+
+[ext_resource type="PackedScene" uid="uid://d3d5h1lqk8u7q" path="res://Scenes/basic_enemy.tscn" id="1_y1bgs"]
+[ext_resource type="Texture2D" uid="uid://chxqc1ln5ds7v" path="res://Assets/Sprites/Enemy Ram.png" id="2_4mntp"]
+[ext_resource type="Script" path="res://Scripts/ram_enemy.gd" id="2_gdex8"]
+[ext_resource type="PackedScene" uid="uid://dk5kqf4ae76sh" path="res://Scenes/infantry_enemy.tscn" id="3_m1k71"]
+[ext_resource type="AudioStream" uid="uid://ch3h1ywvhlxfa" path="res://Assets/Audio/Ram Hit.wav" id="5_mtn4f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kim8"]
+atlas = ExtResource("2_4mntp")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtbwr"]
+atlas = ExtResource("2_4mntp")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feuvt"]
+atlas = ExtResource("2_4mntp")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug1wo"]
+atlas = ExtResource("2_4mntp")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bngnu"]
+atlas = ExtResource("2_4mntp")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiequ"]
+atlas = ExtResource("2_4mntp")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7wt7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kim8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kim8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtbwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feuvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug1wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bngnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiequ")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwc85"]
+size = Vector2(34.6667, 18.6667)
+
+[node name="Ram Enemy" instance=ExtResource("1_y1bgs")]
+scale = Vector2(1, 1)
+script = ExtResource("2_gdex8")
+infantry_Scene = ExtResource("3_m1k71")
+spawn_locations = [Vector2(-16, 0), Vector2(32, 0)]
+health = 20
+speed = 80
+money = 5
+damage = 40
+range_variance = 0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -32)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_h7wt7")
+animation = &"Idle"
+flip_h = true
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(4, -28)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_nwc85")
+
+[node name="RayCast2D" parent="." index="2"]
+position = Vector2(0, -32)
+target_position = Vector2(-65, 0)
+
+[node name="Enemy Health Bar" parent="." index="5"]
+offset_left = -52.0
+offset_top = -83.0
+offset_right = 248.0
+offset_bottom = -48.0
+scale = Vector2(0.35, 0.35)
+tint_progress = Color(0.813333, 1, 0.44, 1)
+
+[node name="Attack Audio" parent="." index="6"]
+stream = ExtResource("5_mtn4f")
+
+[node name="Take Damage Audio" parent="." index="7"]
+pitch_scale = 0.8
+
+[node name="Footsteps Audio" parent="." index="8"]
+pitch_scale = 4.0

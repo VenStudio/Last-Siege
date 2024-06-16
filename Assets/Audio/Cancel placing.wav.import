@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2hx2m1jdakul"
+path="res://.godot/imported/Cancel placing.wav-2f46462f88a94245cf6d31e6d2641325.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Cancel placing.wav"
+dest_files=["res://.godot/imported/Cancel placing.wav-2f46462f88a94245cf6d31e6d2641325.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bt0mkny5ys72u"]
+
+[ext_resource type="Script" path="res://Scripts/Buy Button.gd" id="1_5clt8"]
+[ext_resource type="FontFile" uid="uid://b6btjltaqm0o5" path="res://Assets/alagard.ttf" id="1_fcnil"]
+[ext_resource type="Theme" uid="uid://crvgxs2ri3l5c" path="res://Default 2.tres" id="1_q6iu5"]
+[ext_resource type="PackedScene" uid="uid://doanayot54nxa" path="res://Scenes/trap.tscn" id="2_qv1ke"]
+[ext_resource type="AudioStream" uid="uid://brh3mik462sno" path="res://Assets/Audio/Shop Buy.wav" id="5_vyswh"]
+
+[node name="Buy Button" type="Button"]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 80.0
+offset_bottom = 40.0
+theme = ExtResource("1_q6iu5")
+theme_override_fonts/font = ExtResource("1_fcnil")
+text = "Buy XXXX
+Price: 5"
+script = ExtResource("1_5clt8")
+price = 5
+scene = ExtResource("2_qv1ke")
+
+[node name="Buy Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_vyswh")
+pitch_scale = 1.5
+panning_strength = 0.0
+bus = &"Sounds"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="tree_exiting" from="Buy Audio" to="." method="_on_buy_audio_tree_exiting"]

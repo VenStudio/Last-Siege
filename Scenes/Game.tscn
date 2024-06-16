@@ -1,0 +1,491 @@
+[gd_scene load_steps=46 format=3 uid="uid://cpvtnrrey23go"]
+
+[ext_resource type="PackedScene" uid="uid://vxvp0sfd2p8o" path="res://Scenes/economy_system.tscn" id="1_ts0ml"]
+[ext_resource type="PackedScene" uid="uid://khlytlk5urtl" path="res://Scenes/death_barrier.tscn" id="2_enn1b"]
+[ext_resource type="PackedScene" uid="uid://cro0nuos48r64" path="res://Scenes/player.tscn" id="3_06bfm"]
+[ext_resource type="Script" path="res://Scripts/death_barrier.gd" id="3_ul70w"]
+[ext_resource type="Texture2D" uid="uid://4sakyyr65q6d" path="res://Assets/Sprites/Castle Back.png" id="4_pxpye"]
+[ext_resource type="Texture2D" uid="uid://d62cml6q3e8" path="res://Assets/Sprites/UI Kit/Transparent center/panel-transparent-center-015.png" id="6_6e8kd"]
+[ext_resource type="PackedScene" uid="uid://cat4x3vckm0wg" path="res://Scenes/game_over.tscn" id="6_megkk"]
+[ext_resource type="Texture2D" uid="uid://bonamxmtt6cpi" path="res://Assets/Sprites/Castle Door.png" id="6_u52hq"]
+[ext_resource type="Texture2D" uid="uid://bgy1cc3fjbblh" path="res://Assets/Sprites/Castle Front.png" id="7_w0uoe"]
+[ext_resource type="Texture2D" uid="uid://bot11mqwsx7ld" path="res://Assets/Sprites/UI Kit/Border/panel-border-015.png" id="7_wsb2c"]
+[ext_resource type="PackedScene" uid="uid://cnnmxjpmdocgu" path="res://Scenes/wave_manager.tscn" id="8_wg8i6"]
+[ext_resource type="Texture2D" uid="uid://e876hmqu6o33" path="res://Assets/Sprites/UI Kit/Panel/panel-015.png" id="9_2feix"]
+[ext_resource type="FontFile" uid="uid://b6btjltaqm0o5" path="res://Assets/alagard.ttf" id="9_5denk"]
+[ext_resource type="PackedScene" uid="uid://dy3xndycbgo3w" path="res://Scenes/wall_trap.tscn" id="10_6lja5"]
+[ext_resource type="PackedScene" uid="uid://dk5kqf4ae76sh" path="res://Scenes/infantry_enemy.tscn" id="15_ed8fa"]
+[ext_resource type="PackedScene" uid="uid://ctgh0ma5wu6oe" path="res://Scenes/brute_enemy.tscn" id="16_tmyfy"]
+[ext_resource type="PackedScene" uid="uid://ldpupf01dk5p" path="res://Scenes/ram_enemy.tscn" id="17_ddihd"]
+[ext_resource type="PackedScene" uid="uid://bhl8i7oxsnsek" path="res://Scenes/menu_button.tscn" id="18_48jrl"]
+[ext_resource type="Texture2D" uid="uid://0rfgfuw5gjbw" path="res://Assets/Sprites/Grass Tileset.png" id="18_xxol4"]
+[ext_resource type="Texture2D" uid="uid://6f7fo51i0c13" path="res://Assets/Sprites/UI Kit/UI Black.png" id="20_g17kp"]
+[ext_resource type="PackedScene" uid="uid://clbyea65j5885" path="res://Scenes/navigation_button.tscn" id="20_tuovg"]
+[ext_resource type="PackedScene" uid="uid://bt0mkny5ys72u" path="res://Scenes/buy_button.tscn" id="21_ep5bv"]
+[ext_resource type="PackedScene" uid="uid://rq2sctmwt3cc" path="res://Scenes/spike_trap.tscn" id="22_wcp5v"]
+[ext_resource type="PackedScene" uid="uid://c5qohi66ivf32" path="res://Scenes/crystal_trap.tscn" id="23_af5g7"]
+[ext_resource type="Texture2D" uid="uid://b8l1j2qjurxpd" path="res://Assets/Sprites/UI Kit/Adventure UI Kit/buttonLong_blue.png" id="24_qh03t"]
+[ext_resource type="Texture2D" uid="uid://dxdgvxyhv51u4" path="res://Assets/Sprites/UI Kit/Adventure UI Kit/buttonLong_blue_pressed.png" id="25_viom4"]
+[ext_resource type="PackedScene" uid="uid://bf7s15odfx42p" path="res://Scenes/settings_menu.tscn" id="26_2xydo"]
+[ext_resource type="AudioStream" uid="uid://bwd4by4xrgckr" path="res://Assets/Audio/Ambience.mp3" id="28_hjmc6"]
+[ext_resource type="Texture2D" uid="uid://dfb08dexl8l31" path="res://Assets/Sprites/parallax_mountain_pack/parallax_mountain_pack/layers/parallax-mountain-bg.png" id="28_i8p52"]
+[ext_resource type="Texture2D" uid="uid://cgufmxdid8okc" path="res://Assets/Sprites/parallax_mountain_pack/parallax_mountain_pack/layers/parallax-mountain-mountains.png" id="29_q0bxq"]
+[ext_resource type="Texture2D" uid="uid://byn5vlajfk2xf" path="res://Assets/Sprites/parallax_mountain_pack/parallax_mountain_pack/layers/BG-Sun.png" id="30_g5hk8"]
+[ext_resource type="Texture2D" uid="uid://bosldvxhk0pvl" path="res://Assets/Sprites/parallax_mountain_pack/parallax_mountain_pack/layers/parallax-mountain-montain-far.png" id="30_nffm1"]
+[ext_resource type="Texture2D" uid="uid://cxyix6sw430x7" path="res://Assets/Sprites/parallax_mountain_pack/parallax_mountain_pack/layers/parallax-mountain-trees.png" id="31_lpv63"]
+[ext_resource type="Texture2D" uid="uid://cwaibdiyeg7rw" path="res://Assets/Sprites/parallax_mountain_pack/parallax_mountain_pack/layers/parallax-mountain-foreground-trees.png" id="32_gyuig"]
+
+[sub_resource type="Environment" id="Environment_gb3bq"]
+tonemap_white = 0.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_d4k4s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pftw1"]
+texture = ExtResource("18_xxol4")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_shxu2"]
+sources/0 = SubResource("TileSetAtlasSource_pftw1")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4axbc"]
+polygon = PackedVector2Array(-50, 195, 500, 195)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ngkv"]
+atlas = ExtResource("6_u52hq")
+region = Rect2(245, 76, 14, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4bp8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ngkv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_arybx"]
+texture = ExtResource("24_qh03t")
+modulate_color = Color(1, 1, 1, 0.784314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ajg1"]
+texture = ExtResource("24_qh03t")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vbhdd"]
+texture = ExtResource("25_viom4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atxnj"]
+atlas = ExtResource("20_g17kp")
+region = Rect2(320, 420, 64, 64)
+
+[node name="Game Scene" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gb3bq")
+camera_attributes = SubResource("CameraAttributesPractical_d4k4s")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="WorldEnvironment"]
+color = Color(0.49, 0.377953, 0.2499, 1)
+energy = 0.88
+blend_mode = 1
+
+[node name="Ground" type="TileMap" parent="."]
+position = Vector2(20, 5)
+scale = Vector2(3, 3)
+tile_set = SubResource("TileSet_shxu2")
+format = 2
+layer_0/tile_data = PackedInt32Array(786434, 0, 0, 786435, 65536, 0, 786436, 131072, 0, 786437, 196608, 0, 786438, 0, 0, 786439, 65536, 0, 786440, 131072, 0, 786441, 196608, 0, 786442, 0, 0, 786443, 65536, 0, 786444, 131072, 0, 786445, 196608, 0, 786446, 0, 0, 786447, 65536, 0, 786448, 131072, 0, 786449, 196608, 0, 786450, 0, 0, 786451, 65536, 0, 786452, 131072, 0, 786453, 196608, 0, 786454, 0, 0, 786455, 65536, 0, 786456, 131072, 0, 786457, 196608, 0, 786458, 0, 0, 786459, 65536, 0, 786460, 131072, 0, 786461, 196608, 0, 917488, 131072, 1, 983024, 131072, 2, 917489, 196608, 1, 983025, 196608, 2, 1048560, 131072, 1, 1114096, 131072, 2, 1048561, 196608, 1, 1114097, 196608, 2, 1179632, 131072, 1, 1245168, 131072, 2, 1179633, 196608, 1, 1245169, 196608, 2, 1310704, 131072, 1, 1376240, 131072, 2, 1310705, 196608, 1, 1376241, 196608, 2, 1441776, 131072, 1, 1507312, 131072, 2, 1441777, 196608, 1, 1507313, 196608, 2, 1572848, 131072, 1, 1638384, 131072, 2, 1572849, 196608, 1, 1638385, 196608, 2, 1703920, 131072, 1, 1769456, 131072, 2, 1703921, 196608, 1, 1769457, 196608, 2, 1834992, 131072, 1, 1900528, 131072, 2, 1834993, 196608, 1, 1900529, 196608, 2, 917490, 0, 1, 983026, 0, 2, 917491, 65536, 1, 983027, 65536, 2, 917492, 131072, 1, 983028, 131072, 2, 917493, 196608, 1, 983029, 196608, 2, 1048562, 0, 1, 1114098, 0, 2, 1048563, 65536, 1, 1114099, 65536, 2, 1048564, 131072, 1, 1114100, 131072, 2, 1048565, 196608, 1, 1114101, 196608, 2, 1179634, 0, 1, 1245170, 0, 2, 1179635, 65536, 1, 1245171, 65536, 2, 1179636, 131072, 1, 1245172, 131072, 2, 1179637, 196608, 1, 1245173, 196608, 2, 1310706, 0, 1, 1376242, 0, 2, 1310707, 65536, 1, 1376243, 65536, 2, 1310708, 131072, 1, 1376244, 131072, 2, 1310709, 196608, 1, 1376245, 196608, 2, 1441778, 0, 1, 1507314, 0, 2, 1441779, 65536, 1, 1507315, 65536, 2, 1441780, 131072, 1, 1507316, 131072, 2, 1441781, 196608, 1, 1507317, 196608, 2, 1572850, 0, 1, 1638386, 0, 2, 1572851, 65536, 1, 1638387, 65536, 2, 1572852, 131072, 1, 1638388, 131072, 2, 1572853, 196608, 1, 1638389, 196608, 2, 1703922, 0, 1, 1769458, 0, 2, 1703923, 65536, 1, 1769459, 65536, 2, 1703924, 131072, 1, 1769460, 131072, 2, 1703925, 196608, 1, 1769461, 196608, 2, 1834994, 0, 1, 1900530, 0, 2, 1834995, 65536, 1, 1900531, 65536, 2, 1834996, 131072, 1, 1900532, 131072, 2, 1834997, 196608, 1, 1900533, 196608, 2, 917494, 0, 1, 983030, 0, 2, 917495, 65536, 1, 983031, 65536, 2, 917496, 131072, 1, 983032, 131072, 2, 917497, 196608, 1, 983033, 196608, 2, 1048566, 0, 1, 1114102, 0, 2, 1048567, 65536, 1, 1114103, 65536, 2, 1048568, 131072, 1, 1114104, 131072, 2, 1048569, 196608, 1, 1114105, 196608, 2, 1179638, 0, 1, 1245174, 0, 2, 1179639, 65536, 1, 1245175, 65536, 2, 1179640, 131072, 1, 1245176, 131072, 2, 1179641, 196608, 1, 1245177, 196608, 2, 1310710, 0, 1, 1376246, 0, 2, 1310711, 65536, 1, 1376247, 65536, 2, 1310712, 131072, 1, 1376248, 131072, 2, 1310713, 196608, 1, 1376249, 196608, 2, 1441782, 0, 1, 1507318, 0, 2, 1441783, 65536, 1, 1507319, 65536, 2, 1441784, 131072, 1, 1507320, 131072, 2, 1441785, 196608, 1, 1507321, 196608, 2, 1572854, 0, 1, 1638390, 0, 2, 1572855, 65536, 1, 1638391, 65536, 2, 1572856, 131072, 1, 1638392, 131072, 2, 1572857, 196608, 1, 1638393, 196608, 2, 1703926, 0, 1, 1769462, 0, 2, 1703927, 65536, 1, 1769463, 65536, 2, 1703928, 131072, 1, 1769464, 131072, 2, 1703929, 196608, 1, 1769465, 196608, 2, 1834998, 0, 1, 1900534, 0, 2, 1834999, 65536, 1, 1900535, 65536, 2, 1835000, 131072, 1, 1900536, 131072, 2, 1835001, 196608, 1, 1900537, 196608, 2, 917498, 0, 1, 983034, 0, 2, 917499, 65536, 1, 983035, 65536, 2, 917500, 131072, 1, 983036, 131072, 2, 917501, 196608, 1, 983037, 196608, 2, 1048570, 0, 1, 1114106, 0, 2, 1048571, 65536, 1, 1114107, 65536, 2, 1048572, 131072, 1, 1114108, 131072, 2, 1048573, 196608, 1, 1114109, 196608, 2, 1179642, 0, 1, 1245178, 0, 2, 1179643, 65536, 1, 1245179, 65536, 2, 1179644, 131072, 1, 1245180, 131072, 2, 1179645, 196608, 1, 1245181, 196608, 2, 1310714, 0, 1, 1376250, 0, 2, 1310715, 65536, 1, 1376251, 65536, 2, 1310716, 131072, 1, 1376252, 131072, 2, 1310717, 196608, 1, 1376253, 196608, 2, 1441786, 0, 1, 1507322, 0, 2, 1441787, 65536, 1, 1507323, 65536, 2, 1441788, 131072, 1, 1507324, 131072, 2, 1441789, 196608, 1, 1507325, 196608, 2, 1572858, 0, 1, 1638394, 0, 2, 1572859, 65536, 1, 1638395, 65536, 2, 1572860, 131072, 1, 1638396, 131072, 2, 1572861, 196608, 1, 1638397, 196608, 2, 1703930, 0, 1, 1769466, 0, 2, 1703931, 65536, 1, 1769467, 65536, 2, 1703932, 131072, 1, 1769468, 131072, 2, 1703933, 196608, 1, 1769469, 196608, 2, 1835002, 0, 1, 1900538, 0, 2, 1835003, 65536, 1, 1900539, 65536, 2, 1835004, 131072, 1, 1900540, 131072, 2, 1835005, 196608, 1, 1900541, 196608, 2, 917502, 0, 1, 983038, 0, 2, 917503, 65536, 1, 983039, 65536, 2, 851968, 131072, 1, 917504, 131072, 2, 851969, 196608, 1, 917505, 196608, 2, 1048574, 0, 1, 1114110, 0, 2, 1048575, 65536, 1, 1114111, 65536, 2, 983040, 131072, 1, 1048576, 131072, 2, 983041, 196608, 1, 1048577, 196608, 2, 1179646, 0, 1, 1245182, 0, 2, 1179647, 65536, 1, 1245183, 65536, 2, 1114112, 131072, 1, 1179648, 65536, 2, 1114113, 196608, 1, 1179649, 65536, 2, 1310718, 0, 1, 1376254, 0, 2, 1310719, 65536, 2, 1376255, 65536, 2, 1245184, 65536, 2, 1310720, 131072, 2, 1245185, 65536, 2, 1310721, 196608, 2, 1441790, 0, 1, 1507326, 0, 2, 1441791, 65536, 1, 1507327, 65536, 2, 1376256, 131072, 1, 1441792, 131072, 2, 1376257, 196608, 1, 1441793, 196608, 2, 1572862, 0, 1, 1638398, 0, 2, 1572863, 65536, 1, 1638399, 65536, 2, 1507328, 131072, 1, 1572864, 131072, 2, 1507329, 65536, 2, 1572865, 196608, 2, 1703934, 0, 1, 1769470, 0, 2, 1703935, 65536, 1, 1769471, 65536, 2, 1638400, 131072, 1, 1703936, 131072, 2, 1638401, 196608, 1, 1703937, 196608, 2, 1835006, 0, 1, 1900542, 0, 2, 1835007, 65536, 1, 1900543, 65536, 2, 1769472, 131072, 1, 1835008, 131072, 2, 1769473, 196608, 1, 1835009, 196608, 2, 851970, 0, 1, 917506, 0, 2, 851971, 65536, 2, 917507, 65536, 2, 851972, 131072, 1, 917508, 131072, 2, 851973, 65536, 2, 917509, 196608, 2, 983042, 0, 1, 1048578, 0, 2, 983043, 65536, 1, 1048579, 65536, 2, 983044, 65536, 2, 1048580, 65536, 2, 983045, 65536, 2, 1048581, 196608, 2, 1114114, 65536, 2, 1179650, 0, 2, 1114115, 65536, 1, 1179651, 65536, 2, 1114116, 131072, 1, 1179652, 65536, 2, 1114117, 196608, 1, 1179653, 65536, 2, 1245186, 65536, 2, 1310722, 0, 2, 1245187, 65536, 2, 1310723, 65536, 2, 1245188, 65536, 2, 1310724, 65536, 2, 1245189, 65536, 2, 1310725, 65536, 2, 1376258, 0, 1, 1441794, 65536, 2, 1376259, 65536, 2, 1441795, 65536, 2, 1376260, 131072, 1, 1441796, 131072, 2, 1376261, 196608, 1, 1441797, 196608, 2, 1507330, 65536, 2, 1572866, 0, 2, 1507331, 65536, 1, 1572867, 65536, 2, 1507332, 131072, 1, 1572868, 65536, 2, 1507333, 196608, 1, 1572869, 196608, 2, 1638402, 0, 1, 1703938, 0, 2, 1638403, 65536, 1, 1703939, 65536, 2, 1638404, 65536, 2, 1703940, 131072, 2, 1638405, 65536, 2, 1703941, 196608, 2, 1769474, 0, 1, 1835010, 0, 2, 1769475, 65536, 1, 1835011, 65536, 2, 1769476, 131072, 1, 1835012, 131072, 2, 1769477, 196608, 1, 1835013, 196608, 2, 851974, 0, 1, 917510, 131072, 2, 851975, 65536, 2, 917511, 65536, 2, 851976, 65536, 2, 917512, 65536, 2, 851977, 196608, 1, 917513, 65536, 2, 983046, 65536, 2, 1048582, 0, 2, 983047, 65536, 1, 1048583, 65536, 2, 983048, 131072, 1, 1048584, 131072, 2, 983049, 196608, 1, 1048585, 196608, 2, 1114118, 0, 1, 1179654, 65536, 2, 1114119, 65536, 2, 1179655, 65536, 2, 1114120, 65536, 2, 1179656, 131072, 2, 1114121, 65536, 2, 1179657, 196608, 2, 1245190, 65536, 2, 1310726, 0, 2, 1245191, 65536, 2, 1310727, 65536, 2, 1245192, 65536, 2, 1310728, 131072, 2, 1245193, 65536, 2, 1310729, 196608, 2, 1376262, 0, 1, 1441798, 0, 2, 1376263, 65536, 1, 1441799, 65536, 2, 1376264, 131072, 1, 1441800, 131072, 2, 1376265, 196608, 1, 1441801, 196608, 2, 1507334, 0, 1, 1572870, 0, 2, 1507335, 65536, 1, 1572871, 65536, 2, 1507336, 131072, 1, 1572872, 65536, 2, 1507337, 196608, 1, 1572873, 65536, 2, 1638406, 65536, 2, 1703942, 0, 2, 1638407, 65536, 2, 1703943, 65536, 2, 1638408, 131072, 1, 1703944, 131072, 2, 1638409, 196608, 1, 1703945, 196608, 2, 1769478, 0, 1, 1835014, 0, 2, 1769479, 65536, 1, 1835015, 65536, 2, 1769480, 131072, 1, 1835016, 131072, 2, 1769481, 196608, 1, 1835017, 196608, 2, 851978, 65536, 2, 917514, 65536, 2, 851979, 131072, 2, 917515, 65536, 2, 851980, 131072, 1, 917516, 65536, 2, 851981, 196608, 1, 917517, 65536, 2, 983050, 0, 1, 1048586, 0, 2, 983051, 65536, 1, 1048587, 65536, 2, 983052, 131072, 1, 1048588, 65536, 2, 983053, 196608, 1, 1048589, 65536, 2, 1114122, 65536, 2, 1179658, 0, 2, 1114123, 65536, 2, 1179659, 65536, 2, 1114124, 65536, 2, 1179660, 65536, 2, 1114125, 65536, 2, 1179661, 196608, 2, 1245194, 131072, 2, 1310730, 0, 2, 1245195, 65536, 2, 1310731, 65536, 2, 1245196, 65536, 2, 1310732, 131072, 2, 1245197, 65536, 2, 1310733, 196608, 2, 1376266, 0, 1, 1441802, 0, 2, 1376267, 65536, 1, 1441803, 65536, 2, 1376268, 131072, 1, 1441804, 131072, 2, 1376269, 196608, 1, 1441805, 196608, 2, 1507338, 0, 1, 1572874, 65536, 2, 1507339, 65536, 1, 1572875, 65536, 2, 1507340, 131072, 1, 1572876, 65536, 2, 1507341, 196608, 1, 1572877, 65536, 2, 1638410, 0, 1, 1703946, 0, 2, 1638411, 65536, 1, 1703947, 65536, 2, 1638412, 131072, 1, 1703948, 131072, 2, 1638413, 196608, 1, 1703949, 196608, 2, 1769482, 0, 1, 1835018, 0, 2, 1769483, 65536, 1, 1835019, 65536, 2, 1769484, 131072, 1, 1835020, 131072, 2, 1769485, 196608, 1, 1835021, 196608, 2, 851982, 65536, 2, 917518, 65536, 2, 851983, 65536, 2, 917519, 65536, 2, 851984, 65536, 2, 917520, 131072, 2, 851985, 0, 2, 917521, 196608, 2, 983054, 0, 1, 1048590, 65536, 2, 983055, 65536, 2, 1048591, 65536, 2, 983056, 65536, 2, 1048592, 65536, 2, 983057, 65536, 2, 1048593, 196608, 2, 1114126, 131072, 2, 1179662, 0, 2, 1114127, 65536, 2, 1179663, 65536, 2, 1114128, 65536, 2, 1179664, 131072, 2, 1114129, 65536, 2, 1179665, 196608, 2, 1245198, 65536, 2, 1310734, 0, 2, 1245199, 65536, 2, 1310735, 65536, 2, 1245200, 65536, 2, 1310736, 131072, 2, 1245201, 65536, 2, 1310737, 196608, 2, 1376270, 0, 1, 1441806, 0, 2, 1376271, 65536, 1, 1441807, 65536, 2, 1376272, 131072, 1, 1441808, 131072, 2, 1376273, 196608, 1, 1441809, 196608, 2, 1507342, 0, 1, 1572878, 65536, 2, 1507343, 65536, 1, 1572879, 65536, 2, 1507344, 131072, 1, 1572880, 65536, 2, 1507345, 65536, 2, 1572881, 196608, 2, 1638414, 0, 1, 1703950, 0, 2, 1638415, 65536, 1, 1703951, 65536, 2, 1638416, 131072, 1, 1703952, 131072, 2, 1638417, 196608, 1, 1703953, 196608, 2, 1769486, 0, 1, 1835022, 0, 2, 1769487, 65536, 1, 1835023, 65536, 2, 1769488, 131072, 1, 1835024, 131072, 2, 1769489, 196608, 1, 1835025, 196608, 2, 851986, 65536, 2, 917522, 65536, 2, 851987, 65536, 2, 917523, 65536, 1, 851988, 65536, 2, 917524, 65536, 2, 851989, 65536, 2, 917525, 131072, 2, 983058, 65536, 2, 1048594, 0, 2, 983059, 65536, 2, 1048595, 65536, 2, 983060, 65536, 2, 1048596, 65536, 2, 983061, 65536, 2, 1048597, 65536, 2, 1114130, 65536, 2, 1179666, 0, 2, 1114131, 65536, 2, 1179667, 65536, 2, 1114132, 131072, 1, 1179668, 65536, 2, 1114133, 196608, 1, 1179669, 65536, 2, 1245202, 65536, 2, 1310738, 0, 2, 1245203, 65536, 1, 1310739, 65536, 2, 1245204, 131072, 1, 1310740, 131072, 2, 1245205, 196608, 1, 1310741, 196608, 2, 1376274, 0, 1, 1441810, 0, 2, 1376275, 65536, 1, 1441811, 65536, 2, 1376276, 131072, 1, 1441812, 131072, 2, 1376277, 196608, 1, 1441813, 196608, 2, 1507346, 65536, 2, 1572882, 0, 2, 1507347, 65536, 2, 1572883, 65536, 2, 1507348, 65536, 2, 1572884, 131072, 2, 1507349, 65536, 2, 1572885, 196608, 2, 1638418, 0, 1, 1703954, 0, 2, 1638419, 65536, 1, 1703955, 65536, 2, 1638420, 131072, 1, 1703956, 131072, 2, 1638421, 196608, 1, 1703957, 196608, 2, 1769490, 0, 1, 1835026, 0, 2, 1769491, 65536, 1, 1835027, 65536, 2, 1769492, 131072, 1, 1835028, 131072, 2, 1769493, 196608, 1, 1835029, 196608, 2, 851990, 65536, 2, 917526, 65536, 2, 851991, 65536, 1, 917527, 65536, 2, 851992, 65536, 2, 917528, 65536, 2, 851993, 65536, 2, 917529, 65536, 2, 983062, 65536, 2, 1048598, 65536, 2, 983063, 65536, 1, 1048599, 65536, 2, 983064, 65536, 2, 1048600, 65536, 2, 983065, 196608, 1, 1048601, 65536, 2, 1114134, 0, 1, 1179670, 65536, 2, 1114135, 65536, 1, 1179671, 65536, 2, 1114136, 131072, 1, 1179672, 65536, 2, 1114137, 196608, 1, 1179673, 196608, 2, 1245206, 0, 1, 1310742, 0, 2, 1245207, 65536, 2, 1310743, 65536, 2, 1245208, 131072, 1, 1310744, 131072, 2, 1245209, 196608, 1, 1310745, 196608, 2, 1376278, 0, 1, 1441814, 0, 2, 1376279, 65536, 2, 1441815, 65536, 2, 1376280, 131072, 1, 1441816, 131072, 2, 1376281, 196608, 1, 1441817, 196608, 2, 1507350, 65536, 2, 1572886, 0, 2, 1507351, 65536, 2, 1572887, 65536, 2, 1507352, 131072, 1, 1572888, 131072, 2, 1507353, 196608, 1, 1572889, 196608, 2, 1638422, 0, 1, 1703958, 0, 2, 1638423, 65536, 1, 1703959, 65536, 2, 1638424, 131072, 1, 1703960, 131072, 2, 1638425, 196608, 1, 1703961, 196608, 2, 1769494, 0, 1, 1835030, 0, 2, 1769495, 65536, 1, 1835031, 65536, 2, 1769496, 131072, 1, 1835032, 131072, 2, 1769497, 196608, 1, 1835033, 196608, 2, 851994, 65536, 2, 917530, 65536, 2, 851995, 65536, 2, 917531, 65536, 2, 851996, 131072, 1, 917532, 131072, 2, 851997, 196608, 1, 917533, 196608, 2, 983066, 0, 1, 1048602, 65536, 2, 983067, 65536, 1, 1048603, 65536, 2, 983068, 131072, 1, 1048604, 65536, 2, 983069, 196608, 1, 1048605, 65536, 2, 1114138, 0, 1, 1179674, 131072, 2, 1114139, 65536, 1, 1179675, 65536, 2, 1114140, 65536, 2, 1179676, 131072, 2, 1114141, 196608, 1, 1179677, 196608, 2, 1245210, 0, 1, 1310746, 0, 2, 1245211, 65536, 1, 1310747, 65536, 2, 1245212, 131072, 1, 1310748, 131072, 2, 1245213, 196608, 1, 1310749, 196608, 2, 1376282, 0, 1, 1441818, 0, 2, 1376283, 65536, 1, 1441819, 65536, 2, 1376284, 131072, 1, 1441820, 131072, 2, 1376285, 196608, 1, 1441821, 196608, 2, 1507354, 0, 1, 1572890, 0, 2, 1507355, 65536, 1, 1572891, 65536, 2, 1507356, 131072, 1, 1572892, 131072, 2, 1507357, 196608, 1, 1572893, 196608, 2, 1638426, 0, 1, 1703962, 0, 2, 1638427, 65536, 1, 1703963, 65536, 2, 1638428, 131072, 1, 1703964, 131072, 2, 1638429, 196608, 1, 1703965, 196608, 2, 1769498, 0, 1, 1835034, 0, 2, 1769499, 65536, 1, 1835035, 65536, 2, 1769500, 131072, 1, 1835036, 131072, 2, 1769501, 196608, 1, 1835037, 196608, 2)
+
+[node name="Death Barrier" parent="Ground" instance=ExtResource("2_enn1b")]
+position = Vector2(-6.66667, 659.333)
+script = ExtResource("3_ul70w")
+
+[node name="Death Barrier2" parent="Ground" instance=ExtResource("2_enn1b")]
+position = Vector2(1043.67, 100)
+rotation = -1.5708
+script = ExtResource("3_ul70w")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Ground"]
+occluder = SubResource("OccluderPolygon2D_4axbc")
+
+[node name="Castle" type="Sprite2D" parent="."]
+position = Vector2(-352, 429.5)
+scale = Vector2(3, 3)
+texture = ExtResource("4_pxpye")
+
+[node name="Wall" parent="Castle" node_paths=PackedStringArray("health_bar") instance=ExtResource("10_6lja5")]
+unique_name_in_owner = true
+position = Vector2(95.6667, 44.5)
+scale = Vector2(0.2, 0.2)
+health = 250
+caslte = true
+health_bar = NodePath("../Castle Health Bar")
+game_over_scene = ExtResource("6_megkk")
+game_node = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Castle/Wall" index="0"]
+position = Vector2(4.99989, -61.6667)
+
+[node name="AnimatedSprite2D" parent="Castle/Wall" index="2"]
+sprite_frames = SubResource("SpriteFrames_d4bp8")
+
+[node name="Castle Front" type="Sprite2D" parent="Castle"]
+texture = ExtResource("7_w0uoe")
+
+[node name="Castle Health Bar" type="TextureProgressBar" parent="Castle"]
+offset_left = 96.3333
+offset_top = 70.1667
+offset_right = 396.333
+offset_bottom = 105.167
+scale = Vector2(0.2, 0.2)
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("6_6e8kd")
+texture_over = ExtResource("7_wsb2c")
+texture_progress = ExtResource("9_2feix")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(1, 0.225333, 0.17, 1)
+
+[node name="Castle Health Label" type="Label" parent="Castle/Castle Health Bar"]
+layout_mode = 0
+offset_left = 3.33327
+offset_top = -33.3333
+offset_right = 180.333
+offset_bottom = -4.3333
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("9_5denk")
+theme_override_font_sizes/font_size = 30
+text = "Castle Health"
+
+[node name="Player" parent="." instance=ExtResource("3_06bfm")]
+unique_name_in_owner = true
+position = Vector2(39, 337)
+scale = Vector2(3, 3)
+weapon_type = 1
+
+[node name="Economy System" parent="." node_paths=PackedStringArray("money_text") instance=ExtResource("1_ts0ml")]
+unique_name_in_owner = true
+money = 999999
+money_text = [NodePath("../Camera2D/UI/Money Label"), NodePath("../Camera2D/UI/Money Label 2")]
+
+[node name="Wave Manager" parent="." node_paths=PackedStringArray("start_wave_button", "enemies_remaining_text") instance=ExtResource("8_wg8i6")]
+unique_name_in_owner = true
+position = Vector2(1202, 587)
+waves = [[[12.0, 0, 0], [8.0, 0, 0, 0, 0]], [[12.0, 0, 0, 0, 0, 0], [12.0, 0, 0, 0, 0], [12.0, 1]], [[15.0, 0, 0, 0, 0, 0, 0], [8.0, 1, 0, 0, 0]], [[5.0, 1, 0, 0], [10.0, 0, 1, 0, 0, 0, 0], [5.0, 0, 0, 0, 0]], [[10.0, 2], [12.0, 1, 1, 0, 0], [5.0, 2, 1, 0, 0, 0]], [[5.0, 2, 2, 1, 0], [5.0, 1, 1, 1, 0], [5.0, 2, 2, 1, 0, 0, 0, 0, 0]], [[12.0, 2, 1, 1, 0, 0], [12.0, 2, 1, 1, 0, 0], [12.0, 1, 1, 1, 1, 2], [12.0, 2, 1, 1, 2, 2]]]
+enemies = [ExtResource("15_ed8fa"), ExtResource("16_tmyfy"), ExtResource("17_ddihd")]
+start_wave_button = NodePath("../Buttons/Start Next Wave Button")
+enemies_remaining_text = NodePath("../Camera2D/UI/Enemies Remaining Label")
+game_node = NodePath("..")
+
+[node name="Wave Complete Label" type="Label" parent="Wave Manager"]
+visible = false
+top_level = true
+offset_left = 150.0
+offset_top = 282.0
+offset_right = 258.0
+offset_bottom = 297.0
+scale = Vector2(7, 7)
+theme_override_fonts/font = ExtResource("9_5denk")
+text = "Wave Complete"
+
+[node name="Timer" type="Timer" parent="Wave Manager"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(454, 349)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+
+[node name="UI" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = -350.0
+offset_right = -450.0
+offset_bottom = -350.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Money Label" type="Label" parent="Camera2D/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 900.0
+offset_top = 40.0
+offset_right = 1010.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("9_5denk")
+text = "Money: 99999"
+
+[node name="Money Label 2" type="Label" parent="Camera2D/UI"]
+top_level = true
+layout_mode = 0
+offset_left = -424.0
+offset_top = 450.0
+offset_right = -317.0
+offset_bottom = 473.0
+scale = Vector2(0.585605, 0.585605)
+theme_override_fonts/font = ExtResource("9_5denk")
+text = "Money: 99999"
+
+[node name="Enemies Remaining Label" type="Label" parent="Camera2D/UI"]
+layout_mode = 1
+offset_left = 838.0
+offset_top = 644.0
+offset_right = 1021.0
+offset_bottom = 667.0
+theme_override_fonts/font = ExtResource("9_5denk")
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Navigation" type="Node" parent="Buttons"]
+
+[node name="Navigation Button" parent="Buttons/Navigation" instance=ExtResource("20_tuovg")]
+offset_left = -108.0
+offset_top = 151.0
+offset_right = -53.0
+offset_bottom = 174.0
+scale = Vector2(2, 2)
+text = "< Shop"
+pos = Vector2(-550, 545)
+zoom = Vector2(2.5, 2.5)
+
+[node name="Navigation Button2" parent="Buttons/Navigation" instance=ExtResource("20_tuovg")]
+offset_left = -352.0
+offset_top = 539.0
+offset_right = -334.0
+offset_bottom = 570.0
+text = ">"
+pos = Vector2(450, 350)
+
+[node name="Buy" type="Node" parent="Buttons"]
+
+[node name="Shop Label" type="Label" parent="Buttons/Buy"]
+offset_left = -605.0
+offset_top = 426.0
+offset_right = -565.0
+offset_bottom = 446.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("9_5denk")
+text = "Shop"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons/Buy"]
+offset_left = -741.0
+offset_top = 485.0
+offset_right = -261.0
+offset_bottom = 700.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Traps Label" type="Label" parent="Buttons/Buy/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_5denk")
+text = "Traps"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Traps Container" type="HBoxContainer" parent="Buttons/Buy/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Buy Trap Button3" parent="Buttons/Buy/VBoxContainer/Traps Container" node_paths=PackedStringArray("navigation_button") instance=ExtResource("21_ep5bv")]
+layout_mode = 2
+tooltip_text = "Blocks the way of the enemies"
+obj_name = "Stone Wall"
+price = 12
+navigation_button = NodePath("../../../../Navigation/Navigation Button2")
+scene = ExtResource("10_6lja5")
+
+[node name="Buy Trap Button2" parent="Buttons/Buy/VBoxContainer/Traps Container" node_paths=PackedStringArray("navigation_button") instance=ExtResource("21_ep5bv")]
+layout_mode = 2
+tooltip_text = "Deals damage to enemies walking above it"
+obj_name = "Ground Spikes"
+price = 24
+navigation_button = NodePath("../../../../Navigation/Navigation Button2")
+scene = ExtResource("22_wcp5v")
+
+[node name="Buy Trap Button4" parent="Buttons/Buy/VBoxContainer/Traps Container" node_paths=PackedStringArray("navigation_button") instance=ExtResource("21_ep5bv")]
+layout_mode = 2
+tooltip_text = "Slows down any enemy in it's range"
+obj_name = "Freeze Crystal"
+price = 32
+navigation_button = NodePath("../../../../Navigation/Navigation Button2")
+scene = ExtResource("23_af5g7")
+
+[node name="Traps Container 2" type="HBoxContainer" parent="Buttons/Buy/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Buy Trap Button5" parent="Buttons/Buy/VBoxContainer/Traps Container 2" node_paths=PackedStringArray("navigation_button") instance=ExtResource("21_ep5bv")]
+layout_mode = 2
+obj_name = "The Incinerator"
+price = 75
+navigation_button = NodePath("../../../../Navigation/Navigation Button2")
+
+[node name="Buy Trap Button6" parent="Buttons/Buy/VBoxContainer/Traps Container 2" node_paths=PackedStringArray("navigation_button") instance=ExtResource("21_ep5bv")]
+layout_mode = 2
+obj_name = "Ballista"
+price = 100
+navigation_button = NodePath("../../../../Navigation/Navigation Button2")
+
+[node name="HSeparator" type="HSeparator" parent="Buttons/Buy/VBoxContainer"]
+layout_mode = 2
+
+[node name="Bottom Container" type="HBoxContainer" parent="Buttons/Buy/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Weapons Container" type="VBoxContainer" parent="Buttons/Buy/VBoxContainer/Bottom Container"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Label 2" type="Label" parent="Buttons/Buy/VBoxContainer/Bottom Container/Weapons Container"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_5denk")
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Weapons" type="HBoxContainer" parent="Buttons/Buy/VBoxContainer/Bottom Container/Weapons Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buy Weapon Button 1" parent="Buttons/Buy/VBoxContainer/Bottom Container/Weapons Container/Weapons" instance=ExtResource("21_ep5bv")]
+layout_mode = 2
+tooltip_text = "Your default Bow"
+obj_name = "Bow"
+sold_item = 1
+weapon_type = 1
+
+[node name="Buy Weapon Button 2" parent="Buttons/Buy/VBoxContainer/Bottom Container/Weapons Container/Weapons" instance=ExtResource("21_ep5bv")]
+layout_mode = 2
+tooltip_text = "Slower, but deals much higher damage"
+obj_name = "Crossbow"
+sold_item = 1
+price = 60
+weapon_type = 2
+
+[node name="Buy Weapon Button 3" parent="Buttons/Buy/VBoxContainer/Bottom Container/Weapons Container/Weapons" node_paths=PackedStringArray("navigation_button") instance=ExtResource("21_ep5bv")]
+visible = false
+layout_mode = 2
+obj_name = "Explosives"
+navigation_button = NodePath("../../../../../../Navigation/Navigation Button2")
+
+[node name="VSeparator" type="VSeparator" parent="Buttons/Buy/VBoxContainer/Bottom Container"]
+layout_mode = 2
+
+[node name="Other Container" type="VBoxContainer" parent="Buttons/Buy/VBoxContainer/Bottom Container"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Label 3" type="Label" parent="Buttons/Buy/VBoxContainer/Bottom Container/Other Container"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_5denk")
+text = "Other"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Other" type="HBoxContainer" parent="Buttons/Buy/VBoxContainer/Bottom Container/Other Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buy Health Button" parent="Buttons/Buy/VBoxContainer/Bottom Container/Other Container/Other" instance=ExtResource("21_ep5bv")]
+layout_mode = 2
+obj_name = "Heal Fortress"
+sold_item = 2
+price = 20
+
+[node name="Start Next Wave Button" type="Button" parent="Buttons"]
+offset_left = 860.0
+offset_top = 80.0
+offset_right = 1010.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("9_5denk")
+theme_override_styles/normal = SubResource("StyleBoxTexture_arybx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2ajg1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vbhdd")
+text = "Start Next Wave"
+
+[node name="Settings Button" parent="Buttons" instance=ExtResource("18_48jrl")]
+custom_minimum_size = Vector2(50, 50)
+offset_left = -111.0
+offset_top = 41.0
+offset_right = 81.0
+offset_bottom = 233.0
+scale = Vector2(0.2, 0.2)
+text = ""
+icon = SubResource("AtlasTexture_atxnj")
+icon_alignment = 1
+expand_icon = true
+functionality = 3
+load_scene = ExtResource("26_2xydo")
+time_scale = 0.0
+
+[node name="Ambience Audio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(450, 350)
+stream = ExtResource("28_hjmc6")
+volume_db = -20.0
+panning_strength = 0.0
+bus = &"Sounds"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(449, 338)
+scale = Vector2(4.3, 4.3)
+texture = ExtResource("28_i8p52")
+
+[node name="Bg-sun" type="Sprite2D" parent="Background"]
+position = Vector2(-30.6977, -30.9302)
+texture = ExtResource("30_g5hk8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Background"]
+texture = ExtResource("29_q0bxq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background"]
+texture = ExtResource("30_nffm1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background"]
+texture = ExtResource("31_lpv63")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("32_gyuig")
+
+[connection signal="body_entered" from="Ground/Death Barrier" to="Ground/Death Barrier" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Death Barrier2" to="Ground/Death Barrier2" method="_on_body_entered"]
+[connection signal="health_updated" from="Castle/Wall" to="Buttons/Buy/VBoxContainer/Bottom Container/Other Container/Other/Buy Health Button" method="_on_wall_health_updated"]
+[connection signal="update_weapon_type" from="Player" to="Buttons/Buy/VBoxContainer/Bottom Container/Weapons Container/Weapons/Buy Weapon Button 1" method="_on_player_update_weapon_type"]
+[connection signal="update_weapon_type" from="Player" to="Buttons/Buy/VBoxContainer/Bottom Container/Weapons Container/Weapons/Buy Weapon Button 2" method="_on_player_update_weapon_type"]
+[connection signal="update_weapon_type" from="Player" to="Buttons/Buy/VBoxContainer/Bottom Container/Weapons Container/Weapons/Buy Weapon Button 3" method="_on_player_update_weapon_type"]
+[connection signal="timeout" from="Wave Manager/Timer" to="Wave Manager" method="_on_timer_timeout"]
+[connection signal="pressed" from="Buttons/Start Next Wave Button" to="Wave Manager" method="_on_button_pressed"]
+
+[editable path="Castle/Wall"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgi1qhjk8dmhi"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_vl3pa"]
+[ext_resource type="AudioStream" uid="uid://besd8me37woel" path="res://Assets/Audio/Music.mp3" id="2_k20sm"]
+
+[node name="Game Manager" type="Node"]
+script = ExtResource("1_vl3pa")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_k20sm")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"

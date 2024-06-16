@@ -1,0 +1,156 @@
+[gd_scene load_steps=19 format=3 uid="uid://ctgh0ma5wu6oe"]
+
+[ext_resource type="PackedScene" uid="uid://d3d5h1lqk8u7q" path="res://Scenes/basic_enemy.tscn" id="1_wjito"]
+[ext_resource type="Texture2D" uid="uid://bbt5d1tuy82hs" path="res://Assets/Sprites/Enemy Brute.png" id="2_q881x"]
+[ext_resource type="AudioStream" uid="uid://bl7iy7xeq3jus" path="res://Assets/Audio/Brute Attack.wav" id="3_fxw7r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y48o5"]
+atlas = ExtResource("2_q881x")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msbi4"]
+atlas = ExtResource("2_q881x")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivvvu"]
+atlas = ExtResource("2_q881x")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygb7q"]
+atlas = ExtResource("2_q881x")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07boa"]
+atlas = ExtResource("2_q881x")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjo2g"]
+atlas = ExtResource("2_q881x")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iykh0"]
+atlas = ExtResource("2_q881x")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4o03"]
+atlas = ExtResource("2_q881x")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr0cr"]
+atlas = ExtResource("2_q881x")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sag5"]
+atlas = ExtResource("2_q881x")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sifkt"]
+atlas = ExtResource("2_q881x")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7io8b"]
+atlas = ExtResource("2_q881x")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xabt"]
+atlas = ExtResource("2_q881x")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngmut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y48o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msbi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivvvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygb7q")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07boa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjo2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iykh0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4o03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr0cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sag5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sifkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7io8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xabt")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3t5d"]
+size = Vector2(12, 27.6667)
+
+[node name="Brute Enemy" instance=ExtResource("1_wjito")]
+scale = Vector2(1, 1)
+health = 28
+speed = 30
+money = 6
+damage = 4
+range_variance = 10
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -48)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ngmut")
+animation = &"Walk"
+frame_progress = 0.258527
+flip_h = true
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2, -42.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_m3t5d")
+
+[node name="RayCast2D" parent="." index="2"]
+position = Vector2(0, -48)
+target_position = Vector2(-50, 0)
+
+[node name="Fire Rate" parent="." index="3"]
+wait_time = 1.5
+
+[node name="Enemy Health Bar" parent="." index="5"]
+offset_left = -60.0
+offset_top = -114.0
+offset_right = 240.0
+offset_bottom = -79.0
+scale = Vector2(0.4, 0.4)
+
+[node name="Attack Audio" parent="." index="6"]
+stream = ExtResource("3_fxw7r")
+pitch_scale = 1.5

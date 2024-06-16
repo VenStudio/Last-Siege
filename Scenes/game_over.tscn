@@ -1,0 +1,154 @@
+[gd_scene load_steps=10 format=3 uid="uid://cat4x3vckm0wg"]
+
+[ext_resource type="Texture2D" uid="uid://e876hmqu6o33" path="res://Assets/Sprites/UI Kit/Panel/panel-015.png" id="1_gogyw"]
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="2_io5bk"]
+[ext_resource type="AudioStream" uid="uid://cv2e6swnx1306" path="res://Assets/Audio/Game Over.wav" id="2_l4g63"]
+[ext_resource type="FontFile" uid="uid://b6btjltaqm0o5" path="res://Assets/alagard.ttf" id="2_vixvg"]
+[ext_resource type="PackedScene" uid="uid://bhl8i7oxsnsek" path="res://Scenes/menu_button.tscn" id="3_ghemj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7v8bu"]
+texture = ExtResource("1_gogyw")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_nmo62"]
+resource_name = "Game Over"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:modulate_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(0.31864, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave Complete Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 244), Vector2(0, 244), Vector2(0, 157)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu Button2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_h11la"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:modulate_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave Complete Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 153)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu Button2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wbt5h"]
+_data = {
+"Game Over": SubResource("Animation_nmo62"),
+"RESET": SubResource("Animation_h11la")
+}
+
+[node name="Panel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_right = -131.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7v8bu")
+script = ExtResource("2_io5bk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wbt5h")
+}
+autoplay = "Game Over"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(429, 422)
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("2_l4g63")
+autoplay = true
+panning_strength = 0.0
+bus = &"Sounds"
+
+[node name="Wave Complete Label" type="Label" parent="."]
+top_level = true
+layout_mode = 1
+offset_top = 153.0
+offset_right = 176.0
+offset_bottom = 186.0
+scale = Vector2(5, 5)
+theme_override_colors/font_color = Color(1, 0.151344, 0.108333, 1)
+theme_override_fonts/font = ExtResource("2_vixvg")
+text = "THE ABALISE FORTRESS
+HAS BEEN BREACHED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu Button2" parent="." instance=ExtResource("3_ghemj")]
+visible = false
+layout_mode = 2
+offset_left = 394.0
+offset_top = 410.0
+offset_right = 744.0
+offset_bottom = 503.0
+size_flags_horizontal = 4
+text = "Retry"
+functionality = 2
+unload_scenes = Array[NodePath]([NodePath("..")])

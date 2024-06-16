@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://d3d5h1lqk8u7q"]
+
+[ext_resource type="Script" path="res://Scripts/Basic Enemy.gd" id="1_ry2mx"]
+[ext_resource type="Texture2D" uid="uid://djd1mvxw5apgr" path="res://icon.svg" id="2_7fkui"]
+[ext_resource type="Texture2D" uid="uid://d62cml6q3e8" path="res://Assets/Sprites/UI Kit/Transparent center/panel-transparent-center-015.png" id="3_vsqhc"]
+[ext_resource type="Texture2D" uid="uid://bot11mqwsx7ld" path="res://Assets/Sprites/UI Kit/Border/panel-border-015.png" id="4_xmg24"]
+[ext_resource type="Texture2D" uid="uid://e876hmqu6o33" path="res://Assets/Sprites/UI Kit/Panel/panel-015.png" id="5_2h08p"]
+[ext_resource type="AudioStream" uid="uid://bwey13t4rjbue" path="res://Assets/Audio/Infantry Attack.wav" id="6_ws3fh"]
+[ext_resource type="AudioStream" uid="uid://c41fvqkuy2kbo" path="res://Assets/Audio/Enemy Take Damage.wav" id="7_h7wve"]
+[ext_resource type="AudioStream" uid="uid://bg1uqopgjimv" path="res://Assets/Audio/Footsteps  (1).wav" id="8_nnefn"]
+[ext_resource type="AudioStream" uid="uid://cjn3osb55hubh" path="res://Assets/Audio/Footsteps  (2).wav" id="9_6n8fx"]
+[ext_resource type="AudioStream" uid="uid://ctra4e50e4bxu" path="res://Assets/Audio/Footsteps  (3).wav" id="10_ghve0"]
+[ext_resource type="AudioStream" uid="uid://cg0skaog2supg" path="res://Assets/Audio/Footsteps  (4).wav" id="11_qqg7w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lw1hu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7fkui")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivx1m"]
+size = Vector2(21.3333, 21.3333)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_udm8b"]
+streams_count = 4
+stream_0/stream = ExtResource("8_nnefn")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("9_6n8fx")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("10_ghve0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("11_qqg7w")
+stream_3/weight = 1.0
+
+[node name="Basic Enemy" type="Area2D"]
+z_index = 1
+scale = Vector2(0.5, 0.5)
+collision_layer = 5
+collision_mask = 9
+script = ExtResource("1_ry2mx")
+health = 12
+speed = 100
+money = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_lw1hu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_ivx1m")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -64)
+target_position = Vector2(-150, 0)
+collision_mask = 2
+
+[node name="Fire Rate" type="Timer" parent="."]
+
+[node name="Hit Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Enemy Health Bar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -152.0
+offset_right = 226.0
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("3_vsqhc")
+texture_over = ExtResource("4_xmg24")
+texture_progress = ExtResource("5_2h08p")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(1, 0, 0.3, 1)
+
+[node name="Attack Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ws3fh")
+panning_strength = 0.0
+bus = &"Sounds"
+
+[node name="Take Damage Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_h7wve")
+volume_db = -20.0
+panning_strength = 0.0
+bus = &"Sounds"
+
+[node name="Footsteps Audio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_udm8b")
+volume_db = -20.0
+panning_strength = 0.0
+bus = &"Sounds"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="Hit Timer" to="." method="_on_hit_timer_timeout"]
+[connection signal="finished" from="Footsteps Audio" to="." method="_on_footsteps_audio_finished"]

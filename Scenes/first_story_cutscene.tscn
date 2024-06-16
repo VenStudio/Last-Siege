@@ -1,0 +1,168 @@
+[gd_scene load_steps=11 format=3 uid="uid://v26ym4bavres"]
+
+[ext_resource type="PackedScene" uid="uid://bhl8i7oxsnsek" path="res://Scenes/menu_button.tscn" id="1_7dvkh"]
+[ext_resource type="FontFile" uid="uid://b6btjltaqm0o5" path="res://Assets/alagard.ttf" id="1_bbkrt"]
+[ext_resource type="PackedScene" uid="uid://cpvtnrrey23go" path="res://Scenes/Game.tscn" id="2_fwn21"]
+[ext_resource type="AudioStream" uid="uid://de3jifdqfbu6j" path="res://Assets/Audio/Intro Cutscene.wav" id="3_l870v"]
+
+[sub_resource type="Animation" id="Animation_reqr0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu Button:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0236967]
+}
+
+[sub_resource type="Animation" id="Animation_2bycy"]
+resource_name = "typing_text_effect"
+length = 14.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu Button:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 4, 4.5, 7, 7.5, 10, 10.5, 12, 13, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0236967, 0.0236967, 0.386256, 0.386256, 0.773697, 0.773697, 0.945498, 0.945498, 0.983412, 0.983412, 1.06635]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2q84u"]
+_data = {
+"RESET": SubResource("Animation_reqr0"),
+"typing_text_effect": SubResource("Animation_2bycy")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3di8g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2hvc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6jm48"]
+
+[node name="First Story Cutscene" type="Camera2D"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = -324.0
+offset_right = 577.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_2q84u")
+}
+autoplay = "typing_text_effect"
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="Panel/CenterContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/line_separation = 5
+theme_override_fonts/normal_font = ExtResource("1_bbkrt")
+text = "To Abalise Fortress,
+
+The whole country has fallen; there is no city left unscathed. We have been completely invaded, our lands ravaged, our people displaced. Abalise is the last standing fortress for our country, a beacon of hope amidst the surrounding darkness. You carry the weight of our nation's fate on your shoulders.
+
+I beg you, hold your ground and fight with all your might. Use every ounce of your strength, every weapon at your disposal. You are not just defending a fortress; you are fighting for the memory of our ancestors, the safety of our families, and the future of our children. If Abalise falls, our country will be lost to history.
+
+May the strength of our forebears guide you, and may the hope of our people sustain you. Fight, for the country, for our future, for Abalise.
+
+With all my hopes and prayers,
+
+General Aldric"
+fit_content = true
+visible_characters = 20
+visible_characters_behavior = 1
+visible_ratio = 0.0236967
+
+[node name="Menu Button" parent="Panel" instance=ExtResource("1_7dvkh")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -93.5
+offset_top = -93.0
+offset_right = 174.5
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+text = "Defend Abalise"
+load_scene = ExtResource("2_fwn21")
+unload_scenes = Array[NodePath]([NodePath("../..")])
+
+[node name="Skip Button" parent="Panel" instance=ExtResource("1_7dvkh")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 30.0
+offset_bottom = 80.0
+grow_horizontal = 0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_color = Color(0.641934, 0.641934, 0.641934, 1)
+theme_override_colors/font_hover_color = Color(0.74978, 0.74978, 0.74978, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3di8g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_r2hvc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6jm48")
+text = "Skip >"
+load_scene = ExtResource("2_fwn21")
+unload_scenes = Array[NodePath]([NodePath("../..")])
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_l870v")
+volume_db = -10.0
+autoplay = true
+panning_strength = 0.0
+bus = &"Sounds"

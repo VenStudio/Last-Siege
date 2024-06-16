@@ -1,0 +1,141 @@
+[gd_scene load_steps=15 format=3 uid="uid://dk5kqf4ae76sh"]
+
+[ext_resource type="PackedScene" uid="uid://d3d5h1lqk8u7q" path="res://Scenes/basic_enemy.tscn" id="1_auakk"]
+[ext_resource type="Texture2D" uid="uid://pcswhufqxn7j" path="res://Assets/Sprites/Enemy Infantry.png" id="2_7cpyj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50k1x"]
+atlas = ExtResource("2_7cpyj")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy4yy"]
+atlas = ExtResource("2_7cpyj")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekttc"]
+atlas = ExtResource("2_7cpyj")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njo8w"]
+atlas = ExtResource("2_7cpyj")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcfqu"]
+atlas = ExtResource("2_7cpyj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wta6n"]
+atlas = ExtResource("2_7cpyj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1365h"]
+atlas = ExtResource("2_7cpyj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw0i1"]
+atlas = ExtResource("2_7cpyj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pud7h"]
+atlas = ExtResource("2_7cpyj")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egiwt"]
+atlas = ExtResource("2_7cpyj")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gbilv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50k1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy4yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekttc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njo8w")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcfqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wta6n")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1365h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcfqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wta6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw0i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pud7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egiwt")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv3l1"]
+size = Vector2(8, 16)
+
+[node name="Infantry Enemy" instance=ExtResource("1_auakk")]
+scale = Vector2(1, 1)
+speed = 40
+money = 2
+range_variance = 10
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -32)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_gbilv")
+animation = &"Walk"
+frame_progress = 0.348565
+flip_h = true
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(4, -24)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_jv3l1")
+
+[node name="RayCast2D" parent="." index="2"]
+position = Vector2(0, -32)
+target_position = Vector2(-50, 0)
+
+[node name="Enemy Health Bar" parent="." index="5"]
+offset_left = -42.0
+offset_top = -76.0
+offset_right = 258.0
+offset_bottom = -41.0
+scale = Vector2(0.3, 0.3)
+
+[node name="Attack Audio" parent="." index="6"]
+volume_db = -10.0
+pitch_scale = 1.5
+
+[node name="Take Damage Audio" parent="." index="7"]
+pitch_scale = 1.43
+
+[node name="Footsteps Audio" parent="." index="8"]
+pitch_scale = 3.0

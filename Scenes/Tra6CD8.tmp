@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://doanayot54nxa"]
+
+[ext_resource type="Script" path="res://Scripts/Trap.gd" id="1_cd8wb"]
+[ext_resource type="Texture2D" uid="uid://djd1mvxw5apgr" path="res://icon.svg" id="1_uch4c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yxcej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uch4c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g1gl"]
+size = Vector2(60, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vmou"]
+size = Vector2(60, 60)
+
+[node name="Trap" type="AnimatableBody2D"]
+position = Vector2(100, 0)
+scale = Vector2(0.6, 0.6)
+collision_layer = 8
+script = ExtResource("1_cd8wb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yxcej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0g1gl")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_7vmou")
+target_position = Vector2(0, 0)
+collision_mask = 8
