@@ -7,13 +7,15 @@
 [ext_resource type="AudioStream" uid="uid://brh3mik462sno" path="res://Assets/Audio/Shop Buy.wav" id="5_vyswh"]
 
 [node name="Buy Button" type="Button"]
+light_mask = 2
 custom_minimum_size = Vector2(0, 40)
-offset_right = 80.0
-offset_bottom = 40.0
+offset_right = 86.0
+offset_bottom = 47.0
 theme = ExtResource("1_q6iu5")
 theme_override_fonts/font = ExtResource("1_fcnil")
 text = "Buy XXXX
 Price: 5"
+language = "en"
 script = ExtResource("1_5clt8")
 price = 5
 scene = ExtResource("2_qv1ke")

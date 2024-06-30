@@ -16,6 +16,7 @@ extends Node2D
 @onready var wave_complete_text = $"Wave Complete Label"
 @onready var wave_start_audio = $"Wave Start Audio"
 @onready var wave_complete_audio = $"Wave Complete Audio"
+@onready var waves_label = $"../Camera2D/UI/Waves Label"
 
 static var enemies_count = 0
 
@@ -28,6 +29,10 @@ var game_manager : Node
 
 func _ready():
 	game_manager = get_tree().get_root().get_node("Game")
+	
+	game_manager.update_ui.connect(update_ui)
+	
+	update_ui()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,18 +63,22 @@ func start_next_wave():
 	wave_start_audio.play()
 	current_wave += 1
 	wave_group = 0
+	update_ui()
 	
 	enemies_remaining = 0
 	for i in waves[current_wave]:
 		enemies_remaining +=  i.size() - 1
 	
 	update_enemies_remaining()
+	enemies_remaining_text.visible = true
 	
 	in_wave = true
 	start_wave_button.visible = false
 
 func end_wave():
 	in_wave = false
+	
+	update_ui()
 	start_wave_button.visible = true
 	wave_complete_text.visible = true
 	wave_complete_audio.play()
@@ -89,7 +98,7 @@ func spawn_enemy(instance):
 	instance.wave_manager = %"Wave Manager"
 
 func update_enemies_remaining():
-	enemies_remaining_text.text = "Enemies Remaining: " + str(enemies_remaining)
+	enemies_remaining_text.text = tr("Enemies Remaining: %s") % enemies_remaining
 
 
 func _on_button_pressed():
@@ -99,11 +108,18 @@ func decrease_enemies():
 	enemies_remaining -= 1
 	
 	if enemies_remaining <= 0:
-		enemies_remaining_text.text = "No Enemies Remaining!"
+		enemies_remaining_text.visible = false
 	else:
-		enemies_remaining_text.text = "Enemies Remaining: " + str(enemies_remaining)
+		enemies_remaining_text.text = tr("Enemies Remaining: %s") % enemies_remaining
 
 
 
 func _on_timer_timeout():
 	wave_complete_text.visible = false
+
+
+func update_ui():
+	start_wave_button.text = tr("Start Wave %s") % (current_wave + 2)
+	wave_complete_text.text = tr("Wave %s Complete") % (current_wave + 1)
+	waves_label.text = tr("Waves %s/7") % (current_wave + 1)
+	enemies_remaining_text.text = tr("Enemies Remaining: %s") % enemies_remaining

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cpvtnrrey23go"]
+[gd_scene load_steps=54 format=3 uid="uid://cpvtnrrey23go"]
 
 [ext_resource type="PackedScene" uid="uid://vxvp0sfd2p8o" path="res://Scenes/economy_system.tscn" id="1_ts0ml"]
 [ext_resource type="PackedScene" uid="uid://khlytlk5urtl" path="res://Scenes/death_barrier.tscn" id="2_enn1b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/death_barrier.gd" id="3_ul70w"]
 [ext_resource type="Texture2D" uid="uid://4sakyyr65q6d" path="res://Assets/Sprites/Castle Back.png" id="4_pxpye"]
 [ext_resource type="Texture2D" uid="uid://d62cml6q3e8" path="res://Assets/Sprites/UI Kit/Transparent center/panel-transparent-center-015.png" id="6_6e8kd"]
+[ext_resource type="PackedScene" uid="uid://cat4x3vckm0wg" path="res://Scenes/game_over.tscn" id="6_megkk"]
 [ext_resource type="Texture2D" uid="uid://bonamxmtt6cpi" path="res://Assets/Sprites/Castle Door.png" id="6_u52hq"]
 [ext_resource type="Texture2D" uid="uid://bgy1cc3fjbblh" path="res://Assets/Sprites/Castle Front.png" id="7_w0uoe"]
 [ext_resource type="Texture2D" uid="uid://bot11mqwsx7ld" path="res://Assets/Sprites/UI Kit/Border/panel-border-015.png" id="7_wsb2c"]
@@ -16,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://dk5kqf4ae76sh" path="res://Scenes/infantry_enemy.tscn" id="15_ed8fa"]
 [ext_resource type="PackedScene" uid="uid://ctgh0ma5wu6oe" path="res://Scenes/brute_enemy.tscn" id="16_tmyfy"]
 [ext_resource type="PackedScene" uid="uid://ldpupf01dk5p" path="res://Scenes/ram_enemy.tscn" id="17_ddihd"]
-[ext_resource type="PackedScene" uid="uid://3blg6ml7gl7" path="res://Scenes/scout_enemy.tscn" id="18_1kuna"]
 [ext_resource type="PackedScene" uid="uid://bhl8i7oxsnsek" path="res://Scenes/menu_button.tscn" id="18_48jrl"]
 [ext_resource type="Texture2D" uid="uid://0rfgfuw5gjbw" path="res://Assets/Sprites/Grass Tileset.png" id="18_xxol4"]
 [ext_resource type="Script" path="res://Scripts/Navigation Button.gd" id="19_6hr7r"]
@@ -38,7 +38,6 @@
 [ext_resource type="Texture2D" uid="uid://bosldvxhk0pvl" path="res://Assets/Sprites/parallax_mountain_pack/parallax_mountain_pack/layers/parallax-mountain-montain-far.png" id="30_nffm1"]
 [ext_resource type="Texture2D" uid="uid://cxyix6sw430x7" path="res://Assets/Sprites/parallax_mountain_pack/parallax_mountain_pack/layers/parallax-mountain-trees.png" id="31_lpv63"]
 [ext_resource type="Texture2D" uid="uid://cwaibdiyeg7rw" path="res://Assets/Sprites/parallax_mountain_pack/parallax_mountain_pack/layers/parallax-mountain-foreground-trees.png" id="32_gyuig"]
-[ext_resource type="PackedScene" uid="uid://bdpxms5ucdwmy" path="res://Scenes/dragon_enemy.tscn" id="38_0qtab"]
 
 [sub_resource type="Environment" id="Environment_gb3bq"]
 tonemap_mode = 3
@@ -49,6 +48,20 @@ glow_bloom = 0.15
 glow_blend_mode = 0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_d4k4s"]
+auto_exposure_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_n27gr"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rqi8p"]
+gradient = SubResource("Gradient_n27gr")
+width = 256
+height = 256
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_0i4mn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -76,10 +89,7 @@ texture = ExtResource("18_xxol4")
 sources/0 = SubResource("TileSetAtlasSource_pftw1")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4axbc"]
-polygon = PackedVector2Array(480, 197, -9.83334, 197, -37, 197, -31, 122, -28, 120, -23, 112, -26, 109, -21, 98, -16.5289, 97.4411, -5, 96, 2, 91, 2, 79, -1.33333, 76, -4, 77, -4, 73, -7, 72, -10, 71, -35.8535, 126.856, -37, 129.333, -37, 141.324, -37, 197)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftble"]
-size = Vector2(60, 1000)
+polygon = PackedVector2Array(480, 197, -37, 197, -37, 129.333, -32, 129, -32, 128, -31, 128, -31, 122, -28, 122, -28, 120, -26, 120, -26, 119, -25, 119, -25, 117, -24, 117, -24, 115, -23, 115, -23, 112, -25, 112, -25, 110, -26, 110, -26, 109, -25, 109, -25, 108, -24, 108, -24, 107, -23, 107, -23, 106, -22, 106, -22, 105, -21, 105, -21, 104, -24.3333, 104, -21, 98, -14, 98, -14, 97, -9, 97, -9, 96, -5, 96, -5, 95, -3, 95, -3, 94, -1, 94, -1, 93, 0, 93, 0, 92, 1, 92, 1, 91, 2, 91, 2, 79, -1.33333, 79, -1.33333, 76, -2, 76, -3, 77, -4, 77, -4, 73, -7, 73, -7, 72, -10, 72, -10, 71, -37, 129.333, -37, 197)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ngkv"]
 atlas = ExtResource("6_u52hq")
@@ -114,19 +124,6 @@ texture = ExtResource("25_viom4")
 atlas = ExtResource("20_g17kp")
 region = Rect2(320, 420, 64, 64)
 
-[sub_resource type="Gradient" id="Gradient_n27gr"]
-interpolation_mode = 2
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rqi8p"]
-gradient = SubResource("Gradient_n27gr")
-width = 256
-height = 256
-use_hdr = true
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0, 0.5)
-
 [node name="Game Scene" type="Node2D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -138,7 +135,16 @@ color = Color(0.510255, 0.308532, 0.566407, 1)
 energy = 0.7
 blend_mode = 2
 shadow_filter = 2
-shadow_filter_smooth = 40.0
+
+[node name="PointLight2D" type="PointLight2D" parent="WorldEnvironment"]
+position = Vector2(315, 202)
+scale = Vector2(8, 8)
+energy = 0.6
+shadow_enabled = true
+shadow_color = Color(0.396889, 0.396889, 0.396889, 0)
+shadow_filter = 1
+shadow_filter_smooth = 1.1
+texture = SubResource("GradientTexture2D_rqi8p")
 
 [node name="PointLight2D2" type="PointLight2D" parent="WorldEnvironment"]
 position = Vector2(302, 401)
@@ -182,17 +188,14 @@ scale = Vector2(0.2, 0.2)
 health = 250
 caslte = true
 health_bar = NodePath("../Castle Health Bar")
+game_over_scene = ExtResource("6_megkk")
 game_node = NodePath("../..")
 
 [node name="CollisionShape2D" parent="Castle/Wall" index="0"]
-position = Vector2(4.99989, -415)
-shape = SubResource("RectangleShape2D_ftble")
+position = Vector2(4.99989, -61.6667)
 
 [node name="AnimatedSprite2D" parent="Castle/Wall" index="2"]
 sprite_frames = SubResource("SpriteFrames_d4bp8")
-
-[node name="LightOccluder2D" parent="Castle/Wall" index="9"]
-visible = false
 
 [node name="Castle Front" type="Sprite2D" parent="Castle"]
 texture = ExtResource("7_w0uoe")
@@ -244,8 +247,8 @@ money_text = [NodePath("../Camera2D/UI/Money Label"), NodePath("../Camera2D/UI/M
 [node name="Wave Manager" parent="." node_paths=PackedStringArray("start_wave_button", "enemies_remaining_text") instance=ExtResource("8_wg8i6")]
 unique_name_in_owner = true
 position = Vector2(1202, 587)
-waves = [[[12.0, 3, 4], [8.0, 0, 0, 0, 0]], [[12.0, 0, 0, 0, 0, 0], [12.0, 0, 0, 0, 0], [12.0, 1]], [[15.0, 0, 0, 0, 0, 0, 0], [8.0, 1, 0, 0, 0]], [[5.0, 1, 0, 0], [10.0, 0, 1, 0, 0, 0, 0], [5.0, 0, 0, 0, 0]], [[10.0, 2], [12.0, 1, 1, 0, 0], [5.0, 2, 1, 0, 0, 0]], [[5.0, 2, 2, 1, 0], [5.0, 1, 1, 1, 0], [5.0, 2, 2, 1, 0, 0, 0, 0, 0]], [[12.0, 2, 1, 1, 0, 0], [12.0, 2, 1, 1, 0, 0], [12.0, 1, 1, 1, 1, 2], [12.0, 2, 1, 1, 2, 2]]]
-enemies = [ExtResource("15_ed8fa"), ExtResource("16_tmyfy"), ExtResource("17_ddihd"), ExtResource("18_1kuna"), ExtResource("38_0qtab")]
+waves = [[[12.0, 0, 0], [8.0, 0, 0, 0, 0]], [[12.0, 0, 0, 0, 0, 0], [12.0, 0, 0, 0, 0], [12.0, 1]], [[15.0, 0, 0, 0, 0, 0, 0], [8.0, 1, 0, 0, 0]], [[5.0, 1, 0, 0], [10.0, 0, 1, 0, 0, 0, 0], [5.0, 0, 0, 0, 0]], [[10.0, 2], [12.0, 1, 1, 0, 0], [5.0, 2, 1, 0, 0, 0]], [[5.0, 2, 2, 1, 0], [5.0, 1, 1, 1, 0], [5.0, 2, 2, 1, 0, 0, 0, 0, 0]], [[12.0, 2, 1, 1, 0, 0], [12.0, 2, 1, 1, 0, 0], [12.0, 1, 1, 1, 1, 2], [12.0, 2, 1, 1, 2, 2]]]
+enemies = [ExtResource("15_ed8fa"), ExtResource("16_tmyfy"), ExtResource("17_ddihd")]
 start_wave_button = NodePath("../Buttons/Start Next Wave Button")
 enemies_remaining_text = NodePath("../Camera2D/UI/Enemies Remaining Label")
 game_node = NodePath("..")
@@ -261,7 +264,7 @@ offset_right = 258.0
 offset_bottom = 297.0
 scale = Vector2(7, 7)
 theme_override_fonts/font = ExtResource("9_5denk")
-text = "Wave %s Complete"
+text = "Wave Completed"
 
 [node name="Timer" type="Timer" parent="Wave Manager"]
 wait_time = 2.0
@@ -300,22 +303,6 @@ grow_horizontal = 0
 auto_translate = false
 theme_override_fonts/font = ExtResource("9_5denk")
 text = "99999G"
-horizontal_alignment = 2
-
-[node name="Waves Label" type="Label" parent="Camera2D/UI"]
-light_mask = 2
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 900.0
-offset_top = 64.0
-offset_right = 1010.0
-offset_bottom = 84.0
-grow_horizontal = 0
-theme_override_fonts/font = ExtResource("9_5denk")
-text = "Waves %s/7"
-horizontal_alignment = 2
 
 [node name="Money Label 2" type="Label" parent="Camera2D/UI"]
 top_level = true
@@ -331,7 +318,6 @@ theme_override_fonts/font = ExtResource("9_5denk")
 text = "99999G"
 
 [node name="Enemies Remaining Label" type="Label" parent="Camera2D/UI"]
-visible = false
 light_mask = 2
 layout_mode = 1
 offset_left = 838.0
@@ -341,19 +327,20 @@ offset_bottom = 667.0
 theme_override_fonts/font = ExtResource("9_5denk")
 
 [node name="Place Trap Tip Label" type="Label" parent="Camera2D/UI"]
+unique_name_in_owner = true
 visible = false
 light_mask = 2
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 281.0
-offset_top = 336.0
-offset_right = 635.0
-offset_bottom = 366.0
+offset_left = 232.0
+offset_top = 34.0
+offset_right = 586.0
+offset_bottom = 64.0
 grow_horizontal = 2
-theme_override_colors/font_outline_color = Color(0.241156, 0.241156, 0.241156, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("9_5denk")
 theme_override_font_sizes/font_size = 28
 text = "Press `Escape` to cancel"
@@ -645,7 +632,7 @@ theme_override_fonts/font = ExtResource("9_5denk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_arybx")
 theme_override_styles/hover = SubResource("StyleBoxTexture_2ajg1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_vbhdd")
-text = "Start Wave %s"
+text = "Next Wave"
 
 [node name="Settings Button" parent="Buttons" instance=ExtResource("18_48jrl")]
 custom_minimum_size = Vector2(50, 50)
@@ -683,14 +670,6 @@ texture = ExtResource("28_i8p52")
 [node name="Bg-sun" type="Sprite2D" parent="Background"]
 position = Vector2(-30.6977, -30.9302)
 texture = ExtResource("30_g5hk8")
-
-[node name="PointLight2D" type="PointLight2D" parent="Background/Bg-sun"]
-scale = Vector2(8, 8)
-energy = 0.6
-shadow_enabled = true
-shadow_filter = 2
-shadow_filter_smooth = 1.5
-texture = SubResource("GradientTexture2D_rqi8p")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Background"]
 position = Vector2(-0.0930005, -16.5116)

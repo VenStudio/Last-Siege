@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://2ysyvl1wpu5o"]
+[gd_scene load_steps=11 format=3 uid="uid://2ysyvl1wpu5o"]
 
 [ext_resource type="FontFile" uid="uid://b6btjltaqm0o5" path="res://Assets/alagard.ttf" id="1_3fbgs"]
-[ext_resource type="PackedScene" uid="uid://bhl8i7oxsnsek" path="res://Scenes/menu_button.tscn" id="1_v73qf"]
+[ext_resource type="Texture2D" uid="uid://c6ki4hcavotfm" path="res://Assets/Sprites/UI Kit/Panel/panel-008.png" id="2_y7234"]
+[ext_resource type="Script" path="res://Scripts/menu_button.gd" id="3_6ogkf"]
 [ext_resource type="AudioStream" uid="uid://d3bn04xnr5jdb" path="res://Assets/Audio/Outro Cutscene.wav" id="3_q1prs"]
 
 [sub_resource type="Animation" id="Animation_reqr0"]
@@ -65,9 +66,33 @@ _data = {
 "typing_text_effect": SubResource("Animation_2bycy")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eoi7e"]
+texture = ExtResource("2_y7234")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(0.81, 0.822, 0.9, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q71qx"]
+texture = ExtResource("2_y7234")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ge26l"]
+texture = ExtResource("2_y7234")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(0.158472, 0.158472, 0.158472, 1)
+
 [node name="Last Story Cutscene" type="Camera2D"]
 
 [node name="Panel" type="Panel" parent="."]
+layout_direction = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -112,7 +137,9 @@ visible_characters = 2
 visible_characters_behavior = 1
 visible_ratio = 0.0236967
 
-[node name="Menu Button" parent="Panel" instance=ExtResource("1_v73qf")]
+[node name="Menu Button" type="Button" parent="Panel"]
+light_mask = 2
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -125,11 +152,26 @@ offset_right = 174.5
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.7, 0.7)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3fbgs")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_eoi7e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q71qx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ge26l")
 text = "Exit Game"
+script = ExtResource("3_6ogkf")
 functionality = 1
+load_scene = null
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_q1prs")
 autoplay = true
 panning_strength = 0.0
 bus = &"Sounds"
+
+[connection signal="pressed" from="Panel/Menu Button" to="Panel/Menu Button" method="_on_pressed"]

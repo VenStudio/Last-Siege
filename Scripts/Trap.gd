@@ -11,6 +11,7 @@ static var spaces_arr = [true]
 @onready var trap_sold_audio = $"Trap Sold Audio"
 @onready var trap_place_canceled_audio = $"Trap Place Canceled Audio"
 
+
 var spaces : int = 13
 var current_space :int = 0
 var space : int = -1
@@ -39,6 +40,7 @@ func _input(event):
 		if player:
 			player._can_shoot = true
 		
+		economy_system.set_tip(false)
 		trap_place_canceled_audio.play()
 		queue_free()
 
@@ -72,7 +74,6 @@ func place_trap(current_s):
 	animated_sprite_2d.modulate = Color("white")
 	placed = true
 	
+	economy_system.set_tip(false)
 	if economy_system:
 		economy_system.pay_money(price)
-	if navigation_button:
-		navigation_button.reset_navigation()

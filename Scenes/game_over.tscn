@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cat4x3vckm0wg"]
+[gd_scene load_steps=14 format=3 uid="uid://cat4x3vckm0wg"]
 
 [ext_resource type="Texture2D" uid="uid://e876hmqu6o33" path="res://Assets/Sprites/UI Kit/Panel/panel-015.png" id="1_gogyw"]
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="2_io5bk"]
 [ext_resource type="AudioStream" uid="uid://cv2e6swnx1306" path="res://Assets/Audio/Game Over.wav" id="2_l4g63"]
 [ext_resource type="FontFile" uid="uid://b6btjltaqm0o5" path="res://Assets/alagard.ttf" id="2_vixvg"]
-[ext_resource type="PackedScene" uid="uid://bhl8i7oxsnsek" path="res://Scenes/menu_button.tscn" id="3_ghemj"]
+[ext_resource type="Texture2D" uid="uid://c6ki4hcavotfm" path="res://Assets/Sprites/UI Kit/Panel/panel-008.png" id="5_03pny"]
+[ext_resource type="Script" path="res://Scripts/menu_button.gd" id="6_xw1qj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7v8bu"]
 texture = ExtResource("1_gogyw")
@@ -99,6 +100,29 @@ _data = {
 "RESET": SubResource("Animation_h11la")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eoi7e"]
+texture = ExtResource("5_03pny")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(0.81, 0.822, 0.9, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q71qx"]
+texture = ExtResource("5_03pny")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ge26l"]
+texture = ExtResource("5_03pny")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(0.158472, 0.158472, 0.158472, 1)
+
 [node name="Panel" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,14 +165,30 @@ HAS BEEN BREACHED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Menu Button2" parent="." instance=ExtResource("3_ghemj")]
+[node name="Menu Button2" type="Button" parent="."]
 visible = false
+light_mask = 2
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 offset_left = 394.0
 offset_top = 410.0
 offset_right = 744.0
 offset_bottom = 503.0
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vixvg")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_eoi7e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q71qx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ge26l")
 text = "Retry"
+script = ExtResource("6_xw1qj")
 functionality = 2
 unload_scenes = Array[NodePath]([NodePath("..")])
+
+[connection signal="pressed" from="Menu Button2" to="Menu Button2" method="_on_pressed"]

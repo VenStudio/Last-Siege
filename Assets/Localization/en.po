@@ -1,0 +1,156 @@
+# LANGUAGE translation for Last Siege for the following files:
+# res://Scenes/Game.tscn
+# res://Scenes/game_over.tscn
+# res://Scenes/main_menu.tscn
+# res://Scenes/settings_menu.tscn
+# res://Scenes/wave_manager.tscn
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Last Siege\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ven (Omar)\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: Scenes/Game.tscn
+msgid "CASTLE_HEALTH"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "WAVE_COMPLETE"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "MONEY: %s"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "ENEMIES_REMAINING"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "< SHOP"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "SHOP"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "TRAPS"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Blocks the way of the enemies"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "BUY_WALL"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Castle Health is Full"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Deals damage to enemies walking above it"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "BUY_SPIKES"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Slows down any enemy in it's range"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "BUY_CRYSTAL"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "WEAPONS"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Your default Bow"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "BUY_BOW"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Slower, but deals much higher damage"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "BUY_CROSSBOW"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "MISC."
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "NEXT_WAVE"
+msgstr ""
+
+#: Scenes/game_over.tscn
+msgid ""
+"THE ABALISE FORTRESS\n"
+"HAS BEEN BREACHED"
+msgstr ""
+
+#: Scenes/main_menu.tscn
+msgid "Last Seige"
+msgstr ""
+
+#: Scenes/main_menu.tscn
+msgid "PLAY"
+msgstr "Play"
+
+#: Scenes/main_menu.tscn Scenes/settings_menu.tscn
+msgid "Settings"
+msgstr ""
+
+#: Scenes/main_menu.tscn
+msgid "Exit"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Audio"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Master"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Sound Effects"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Music"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Video\n"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "FullScreen"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Return"
+msgstr ""

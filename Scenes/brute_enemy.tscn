@@ -1,8 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctgh0ma5wu6oe"]
+[gd_scene load_steps=20 format=3 uid="uid://ctgh0ma5wu6oe"]
 
 [ext_resource type="PackedScene" uid="uid://d3d5h1lqk8u7q" path="res://Scenes/basic_enemy.tscn" id="1_wjito"]
 [ext_resource type="Texture2D" uid="uid://bbt5d1tuy82hs" path="res://Assets/Sprites/Enemy Brute.png" id="2_q881x"]
 [ext_resource type="AudioStream" uid="uid://bl7iy7xeq3jus" path="res://Assets/Audio/Brute Attack.wav" id="3_fxw7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3t5d"]
+size = Vector2(12, 27.6667)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y48o5"]
 atlas = ExtResource("2_q881x")
@@ -113,8 +116,8 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3t5d"]
-size = Vector2(12, 27.6667)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dvvry"]
+polygon = PackedVector2Array(-12, 0, -12, -56, -8, -56, -8, -76, 8, -76, 8, -56, -9, -56, 8, -56, 16, -56, 16, 0, -12, 0)
 
 [node name="Brute Enemy" instance=ExtResource("1_wjito")]
 scale = Vector2(1, 1)
@@ -124,18 +127,18 @@ money = 6
 damage = 4
 range_variance = 10
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(2, -42.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_m3t5d")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(0, -48)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ngmut")
 animation = &"Walk"
 frame_progress = 0.258527
 flip_h = true
-
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(2, -42.5)
-scale = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_m3t5d")
 
 [node name="RayCast2D" parent="." index="2"]
 position = Vector2(0, -48)
@@ -154,3 +157,6 @@ scale = Vector2(0.4, 0.4)
 [node name="Attack Audio" parent="." index="6"]
 stream = ExtResource("3_fxw7r")
 pitch_scale = 1.5
+
+[node name="LightOccluder2D" parent="." index="9"]
+occluder = SubResource("OccluderPolygon2D_dvvry")

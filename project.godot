@@ -27,6 +27,7 @@ window/layer_1="Default"
 
 [gui]
 
+timers/tooltip_delay_sec=0.1
 timers/size/mode=0
 timers/size/viewport_height=648
 timers/size/viewport_width=1152
@@ -44,6 +45,13 @@ shoot={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Assets/Localization/en.po", "res://Assets/Localization/ar.po")
+locale/translations_pot_files=PackedStringArray("res://Scenes/Game.tscn", "res://Scenes/game_over.tscn", "res://Scenes/main_menu.tscn", "res://Scenes/settings_menu.tscn", "res://Scenes/wave_manager.tscn", "res://Scenes/first_story_cutscene.tscn", "res://Scenes/last_story_cutscene.tscn")
+locale/language_filter=["ar", "en"]
+locale/locale_filter_mode=1
+
 [layer_names]
 
 2d_physics/layer_1="Default"
@@ -56,3 +64,4 @@ shoot={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+viewport/hdr_2d=true

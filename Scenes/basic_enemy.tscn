@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://ctra4e50e4bxu" path="res://Assets/Audio/Footsteps  (3).wav" id="10_ghve0"]
 [ext_resource type="AudioStream" uid="uid://cg0skaog2supg" path="res://Assets/Audio/Footsteps  (4).wav" id="11_qqg7w"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxwuo"]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lw1hu"]
 animations = [{
 "frames": [{
@@ -22,9 +24,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivx1m"]
-size = Vector2(21.3333, 21.3333)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_udm8b"]
 streams_count = 4
@@ -40,21 +39,21 @@ stream_3/weight = 1.0
 [node name="Basic Enemy" type="Area2D"]
 z_index = 1
 scale = Vector2(0.5, 0.5)
-collision_layer = 5
+collision_layer = 4
 collision_mask = 9
 script = ExtResource("1_ry2mx")
 health = 12
 speed = 100
 money = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -64)
-sprite_frames = SubResource("SpriteFrames_lw1hu")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -64)
 scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_ivx1m")
+shape = SubResource("RectangleShape2D_cxwuo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_lw1hu")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, -64)
@@ -67,6 +66,7 @@ collision_mask = 2
 wait_time = 0.2
 
 [node name="Enemy Health Bar" type="TextureProgressBar" parent="."]
+layout_direction = 2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -108,8 +108,9 @@ volume_db = -20.0
 panning_strength = 0.0
 bus = &"Sounds"
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="Hit Timer" to="." method="_on_hit_timer_timeout"]

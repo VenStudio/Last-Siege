@@ -1,0 +1,290 @@
+# LANGUAGE translation for Last Siege for the following files:
+# res://Scenes/Game.tscn
+# res://Scenes/game_over.tscn
+# res://Scenes/main_menu.tscn
+# res://Scenes/settings_menu.tscn
+# res://Scenes/wave_manager.tscn
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Last Siege\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ven (Omar)\n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: Scenes/Game.tscn
+msgid "Active"
+msgstr "مستخدم"
+
+#: Scenes/Game.tscn
+msgid "Equip "
+msgstr "تسلح ب "
+
+#: Scenes/Game.tscn
+msgid "Bow"
+msgstr "قوس"
+
+#: Scenes/Game.tscn
+msgid "Crossbow"
+msgstr "النشاب"
+
+#: Scenes/Game.tscn
+msgid "Castle Health is Full"
+msgstr "صحة القلعة كاملة"
+
+#: Scenes/Game.tscn
+msgid ""
+"Heal Fortress 250/%s\n"
+" +20HP for 15G"
+msgstr ""
+"استعد صحة الحصن 250/%s\n"
+"+20 نقطة ب15G"
+
+#: Scenes/Game.tscn
+msgid "Castle Health"
+msgstr "صحة القلعة"
+
+#: Scenes/Game.tscn
+msgid "Wave %s Complete"
+msgstr "اكتملت الجولة %s"
+
+#: Scenes/Game.tscn
+msgid "Waves %s/7"
+msgstr "الجولة %s/7"
+
+#: Scenes/Game.tscn
+msgid "Press `Escape` to cancel"
+msgstr "اضغط 'Escape' للإلغاء"
+
+#: Scenes/Game.tscn
+msgid "< SHOP"
+msgstr "المتجر >"
+
+#: Scenes/Game.tscn
+msgid ">"
+msgstr "<"
+
+#: Scenes/Game.tscn
+msgid "Shop"
+msgstr "المتجر"
+
+#: Scenes/Game.tscn
+msgid "Traps"
+msgstr "الفخاخ"
+
+#: Scenes/Game.tscn
+msgid "Blocks the way of the enemies"
+msgstr "يقف في طريق الأعداء"
+
+#: Scenes/Game.tscn
+msgid ""
+"Buy Stone Wall\n"
+"12G"
+msgstr "اشتر الجدار الحجري 12G"
+
+#: Scenes/Game.tscn
+msgid "Deals damage to enemies walking above it"
+msgstr "يسبب ضرراً للأعداء الذين يمشون من فوقه"
+
+#: Scenes/Game.tscn
+msgid ""
+"Buy Ground Spikes\n"
+"24G"
+msgstr ""
+"اشتر الفخ الأرضي\n"
+"24G"
+
+#: Scenes/Game.tscn
+msgid "Slows down any enemy in it's range"
+msgstr "يبطأ سرعة الأعداء داخل نطاقه"
+
+#: Scenes/Game.tscn
+msgid ""
+"Buy Freeze Crystal\n"
+"32G"
+msgstr ""
+"اشتر الكريستالة المجمدة\n"
+"32G"
+
+#: Scenes/Game.tscn
+msgid "Weapons"
+msgstr "الأسلحة"
+
+#: Scenes/Game.tscn
+msgid "Your default Bow"
+msgstr "قوسك الأصلي"
+
+#: Scenes/Game.tscn
+msgid ""
+"Buy Bow\n"
+"5G"
+msgstr "اشتر القوس"
+
+#: Scenes/Game.tscn
+msgid "Slower, but deals much higher damage"
+msgstr "بطيء ولكنه يسبب ضرراً عالياً جداً"
+
+#: Scenes/Game.tscn
+msgid ""
+"Buy Crossbow\n"
+"60G"
+msgstr ""
+"اشتر النشاب\n"
+"60G"
+
+#: Scenes/Game.tscn
+msgid "Misc."
+msgstr "أخرى."
+
+#: Scenes/Game.tscn
+msgid "Start Wave %s"
+msgstr "ابدأ الجولة %s"
+
+#: Scenes/game_over.tscn
+msgid ""
+"THE ABALISE FORTRESS\n"
+"HAS BEEN BREACHED"
+msgstr "حصن أباليس تم اختراقه"
+
+#: Scenes/game_over.tscn
+msgid "Retry"
+msgstr "إعادة"
+
+#: Scenes/main_menu.tscn
+msgid "Play"
+msgstr "ابدأ"
+
+#: Scenes/main_menu.tscn Scenes/settings_menu.tscn
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: Scenes/main_menu.tscn
+msgid "Exit"
+msgstr "خروج"
+
+#: Scenes/settings_menu.tscn
+msgid "Audio"
+msgstr "الصوتيات"
+
+#: Scenes/settings_menu.tscn
+msgid "Master"
+msgstr "الأصوات"
+
+#: Scenes/settings_menu.tscn
+msgid "Sound Effects"
+msgstr "المؤثرات الصوتية"
+
+#: Scenes/settings_menu.tscn
+msgid "Music"
+msgstr "الموسيقى"
+
+#: Scenes/settings_menu.tscn
+msgid "Video\n"
+msgstr "البصريات\n"
+
+#: Scenes/settings_menu.tscn
+msgid "FullScreen"
+msgstr "ملئ الشاشة"
+
+#: Scenes/settings_menu.tscn
+msgid "Language\n"
+msgstr "اللغة\n"
+
+#: Scenes/settings_menu.tscn
+msgid "Return"
+msgstr "رجوع"
+
+#: Scenes/first_story_cutscene.tscn
+msgid ""
+"To Abalise Fortress,\n"
+"\n"
+"The whole country has fallen; there is no city left unscathed. We have been "
+"completely invaded, our lands ravaged, our people displaced. Abalise is the "
+"last standing fortress for our country, a beacon of hope amidst the "
+"surrounding darkness. You carry the weight of our nation's fate on your "
+"shoulders.\n"
+"\n"
+"I beg you, hold your ground and fight with all your might. Use every ounce of "
+"your strength, every weapon at your disposal. You are not just defending a "
+"fortress; you are fighting for the memory of our ancestors, the safety of our "
+"families, and the future of our children. If Abalise falls, our country will "
+"be lost to history.\n"
+"\n"
+"May the strength of our forebears guide you, and may the hope of our people "
+"sustain you. Fight, for the country, for our future, for Abalise.\n"
+"\n"
+"With all my hopes and prayers,\n"
+"\n"
+"General Aldric"
+msgstr ""
+"إلى قلعة أباليس،\n"
+"\n"
+"لقد سقطت البلاد بأكملها؛ لم تبقى مدينة واحدة سالمة. لقد تعرضنا لغزو شامل، "
+"وأراضينا نهبت، وشعبنا تشرد. أباليس هي آخر حصن صامد لبلادنا، منارة الأمل وسط "
+"الظلام المحيط. تحملون على أكتافكم مصير أمتنا.\n"
+"\n"
+"أرجو منكم الصمود والقتال بكل قوتكم. استخدموا كل ذرة من قوتكم، وكل سلاح في "
+"متناولكم. أنتم لا تدافعون فقط عن قلعة؛ أنتم تقاتلون من أجل ذكرى أجدادنا، "
+"وسلامة عائلاتنا، ومستقبل أطفالنا. إذا سقطت أباليس، ستضيع بلادنا في صفحات "
+"التاريخ.\n"
+"\n"
+"لتكن قوة أجدادنا مرشدة لكم، وليكن أمل شعبنا داعماً لكم. قاتلوا من أجل البلاد، "
+"من أجل مستقبلنا، من أجل أباليس.\n"
+"\n"
+"مع كل آمالي ودعواتي،\n"
+"\n"
+"الجنرال ألدرِك"
+
+#: Scenes/first_story_cutscene.tscn
+msgid "Defend Abalise"
+msgstr "احمي أباليس"
+
+#: Scenes/first_story_cutscene.tscn
+msgid "Skip >"
+msgstr "< تخطي"
+
+#: Scenes/last_story_cutscene.tscn
+msgid ""
+"To Abalise Fortress,\n"
+"Bla Bla Bla...\n"
+"New kingdom here babyyyyy\n"
+"\n"
+"Thanks For Playing!\n"
+"\n"
+"General Aldric"
+msgstr ""
+"إلى قلعة أباليس،\n"
+"\n"
+"بلا بلا بلا...\n"
+"المملكة الجديدة هنااااااااااااا\n"
+"\n"
+"شكرًا على اللعب!\n"
+"\n"
+"الجنرال ألدرِك"
+
+#: Scenes/last_story_cutscene.tscn
+msgid "Exit Game"
+msgstr "خروج"
+
+#~ msgid "Enemies Remaining: %s"
+#~ msgstr "الأعداء المتبقون: %s"
+
+#~ msgid "No Enemies Remaining!"
+#~ msgstr "لا يوجد أعداء متبقون!"
+
+#~ msgid "Next Wave"
+#~ msgstr "الجولة التالية"
+
+#~ msgid "WAVE_COMPLETE"
+#~ msgstr "اكتملت الجولة"

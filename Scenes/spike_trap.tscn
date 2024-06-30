@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://rq2sctmwt3cc"]
+[gd_scene load_steps=15 format=3 uid="uid://rq2sctmwt3cc"]
 
 [ext_resource type="PackedScene" uid="uid://doanayot54nxa" path="res://Scenes/trap.tscn" id="1_ynmi1"]
 [ext_resource type="Script" path="res://Scripts/Spike.gd" id="2_mhevu"]
@@ -8,7 +8,7 @@
 size = Vector2(155, 111.667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yjr7"]
-size = Vector2(46.6667, 93.75)
+size = Vector2(76.6667, 93.75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7b14t"]
 atlas = ExtResource("3_bysl3")
@@ -66,6 +66,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_6xbum"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ucp27"]
+gradient = SubResource("Gradient_6xbum")
+width = 256
+height = 256
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+
 [node name="Spike" instance=ExtResource("1_ynmi1")]
 script = ExtResource("2_mhevu")
 damage = 9
@@ -88,7 +101,7 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect Enemies Area" index="0"]
-position = Vector2(98.3333, -34.7917)
+position = Vector2(100, -34.7917)
 shape = SubResource("RectangleShape2D_6yjr7")
 
 [node name="AnimatedSprite2D" parent="." index="4"]
@@ -108,9 +121,16 @@ wait_time = 4.0
 [node name="Spike Activate Audio" type="AudioStreamPlayer2D" parent="." index="9"]
 panning_strength = 0.0
 
+[node name="PointLight2D" type="PointLight2D" parent="." index="10"]
+energy = 0.3
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 5.0
+texture = SubResource("GradientTexture2D_ucp27")
+
 [connection signal="area_entered" from="Damage Area" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Damage Area" to="." method="_on_area_2d_body_entered"]
-[connection signal="area_entered" from="Detect Enemies Area" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Detect Enemies Area" to="." method="_on_detect_enemies_area_area_entered"]
+[connection signal="area_entered" from="Detect Enemies Area" to="." method="_on_area_2d_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

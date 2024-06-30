@@ -23,8 +23,6 @@ func _ready():
 	_update_state()
 	
 	match sold_item:
-		SoldItem.TRAP:
-			text = "Buy " + obj_name + "\nPrice: " + str(price)
 		SoldItem.WEAPON:
 			_on_player_update_weapon_type()
 		SoldItem.HEALTH:
@@ -60,15 +58,16 @@ func _on_pressed():
 				instance.economy_system = economy_system
 				instance.global_position = Vector2(100, instance.ground_level)
 				instance.price = price
-				print("Purchaes Trap")
+				
+				economy_system.set_tip(true)
 			SoldItem.WEAPON:
 				economy_system.pay_money(price)
 				player.own_weapon(weapon_type)
-				print("Purchased weapon")
 			SoldItem.HEALTH:
 				castle_wall.heal(20)
 				economy_system.pay_money(price)
-				print("Purchased Castle Health")
+		
+		print("Purchaed " + obj_name)
 		
 		if navigation_button:
 			navigation_button.navigate()
@@ -84,15 +83,19 @@ func _on_player_update_weapon_type():
 	
 	if %Player.get_weapon_type() == weapon_type:
 		disabled = true
-		text = obj_name + "\nOwned"
+		text = tr("Active")
 		price = 0
-		print(str(weapon_type))
 	elif %Player.get_owned_weapons().bsearch(weapon_type) < %Player.get_owned_weapons().size():
 		disabled = false
-		text = "Equip\n" + obj_name
+		
+		text = tr("Equip ")
+		match obj_name:
+			"Bow":
+				text += tr("Bow")
+			"Crossbow":
+				text = tr("Crossbow")
 	else:
 		disabled = false
-		text = "Buy " + obj_name + "\nPrice: " + str(price)
 
 func _on_wall_health_updated():
 	if not sold_item == SoldItem.HEALTH:
@@ -100,10 +103,10 @@ func _on_wall_health_updated():
 	
 	if castle_wall.health >= castle_wall.max_health:
 		disabled = true
-		text = "Castle Health is Full"
+		text = tr("Castle Health is Full")
 	else:
 		disabled = false
-		text = "Buy +20 Castle Health" + "\nCurrent Health: " + str(castle_wall.health) + "/" + str(castle_wall.max_health) + "\nPrice: " + str(price)
+		text = tr("Heal Fortress 250/%s\n +20HP for 15G") % castle_wall.health
 		
 
 func _update_state():

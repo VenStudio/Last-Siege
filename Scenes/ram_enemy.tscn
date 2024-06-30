@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://ldpupf01dk5p"]
+[gd_scene load_steps=15 format=3 uid="uid://ldpupf01dk5p"]
 
 [ext_resource type="PackedScene" uid="uid://d3d5h1lqk8u7q" path="res://Scenes/basic_enemy.tscn" id="1_y1bgs"]
 [ext_resource type="Texture2D" uid="uid://chxqc1ln5ds7v" path="res://Assets/Sprites/Enemy Ram.png" id="2_4mntp"]
 [ext_resource type="Script" path="res://Scripts/ram_enemy.gd" id="2_gdex8"]
 [ext_resource type="PackedScene" uid="uid://dk5kqf4ae76sh" path="res://Scenes/infantry_enemy.tscn" id="3_m1k71"]
 [ext_resource type="AudioStream" uid="uid://ch3h1ywvhlxfa" path="res://Assets/Audio/Ram Hit.wav" id="5_mtn4f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06qst"]
+size = Vector2(18.5, 4.33333)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kim8"]
 atlas = ExtResource("2_4mntp")
@@ -64,8 +67,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwc85"]
-size = Vector2(34.6667, 18.6667)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1cgaj"]
+polygon = PackedVector2Array(-4, 0, -20, 0, -20, -12, -36, -32, -52, -32, -64, -47, -51, -60, 56, -60, 60, -45, 55, -32, 48, -32, 48, 0, 32, 0, 33, 1, 32, -1, 32, -12, 16, -32, -4, -32)
 
 [node name="Ram Enemy" instance=ExtResource("1_y1bgs")]
 scale = Vector2(1, 1)
@@ -78,17 +81,16 @@ money = 5
 damage = 40
 range_variance = 0
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(4.5, -47)
+shape = SubResource("RectangleShape2D_06qst")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(0, -32)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_h7wt7")
 animation = &"Idle"
 flip_h = true
-
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(4, -28)
-scale = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_nwc85")
 
 [node name="RayCast2D" parent="." index="2"]
 position = Vector2(0, -32)
@@ -110,3 +112,6 @@ pitch_scale = 0.8
 
 [node name="Footsteps Audio" parent="." index="8"]
 pitch_scale = 4.0
+
+[node name="LightOccluder2D" parent="." index="9"]
+occluder = SubResource("OccluderPolygon2D_1cgaj")

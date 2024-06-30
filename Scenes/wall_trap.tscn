@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy3xndycbgo3w"]
+[gd_scene load_steps=11 format=3 uid="uid://dy3xndycbgo3w"]
 
 [ext_resource type="PackedScene" uid="uid://doanayot54nxa" path="res://Scenes/trap.tscn" id="1_jxk85"]
 [ext_resource type="Script" path="res://Scripts/wall.gd" id="2_7gm5t"]
+[ext_resource type="PackedScene" uid="uid://cat4x3vckm0wg" path="res://Scenes/game_over.tscn" id="3_k01l5"]
 [ext_resource type="Texture2D" uid="uid://ctiokp7tgb1pg" path="res://Assets/Sprites/Trap Wall.png" id="3_ofpcc"]
 [ext_resource type="Texture2D" uid="uid://d62cml6q3e8" path="res://Assets/Sprites/UI Kit/Transparent center/panel-transparent-center-015.png" id="4_8os47"]
 [ext_resource type="Texture2D" uid="uid://bot11mqwsx7ld" path="res://Assets/Sprites/UI Kit/Border/panel-border-015.png" id="5_4vn4u"]
@@ -19,12 +20,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_i6tf4"]
+closed = false
+polygon = PackedVector2Array(4.16666, -4.16666, 4.16666, -454.167, 16.6667, -466.667, 16.6667, -454.167, 79.1667, -454.167, 79.1667, -466.667, 104.167, -466.667, 104.167, -479.167, 116.667, -479.167, 116.667, -491.667, 129.167, -491.667, 141.667, -504.167, 141.667, -54.1667, 129.167, -54.1667, 129.167, -41.6667, 116.667, -41.6667, 116.667, -29.1667, 104.167, -29.1667, 104.167, -16.6667, 91.6667, -16.6667, 91.6667, -4.16666, 66.6667, -4.16666, 66.6667, 8.33334, -8.33334, 8.33334, -8.33334, -4.16666)
+
 [node name="Wall" node_paths=PackedStringArray("health_bar") instance=ExtResource("1_jxk85")]
 script = ExtResource("2_7gm5t")
 health = 50
 caslte = false
 health_bar = NodePath("Wall Health Bar")
-game_over_scene = null
+game_over_scene = ExtResource("3_k01l5")
+game_node = NodePath("")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -85)
@@ -39,6 +45,7 @@ wait_time = 0.1
 
 [node name="Wall Health Bar" type="TextureProgressBar" parent="." index="4"]
 visible = false
+layout_direction = 2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -67,5 +74,10 @@ tint_progress = Color(1, 0.533333, 0, 1)
 stream = ExtResource("7_4h7j1")
 panning_strength = 0.0
 bus = &"Sounds"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="9"]
+position = Vector2(-31.6667, 16.6667)
+scale = Vector2(0.4, 0.4)
+occluder = SubResource("OccluderPolygon2D_i6tf4")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -3,7 +3,7 @@ extends Area2D
 @export var health = 8
 @export var speed = 20
 @export var money = 3
-@export var damage = 1
+@export var damage : float = 1
 @export var range_variance = 50
 
 @onready var fire_rate = $"Fire Rate"
@@ -16,8 +16,6 @@ extends Area2D
 @onready var attack_audio = $"Attack Audio"
 @onready var take_damage_audio = $"Take Damage Audio"
 @onready var footsteps_audio = $"Footsteps Audio"
-
-
 
 var max_speed = 20
 var slowness_counts = 0
@@ -51,6 +49,9 @@ func _process(delta):
 
 
 func take_damage(d, play_sound : bool = true):
+	if health <= 0:
+		return
+	
 	health -= d
 	enemy_health_bar.value = health
 	if play_sound:
@@ -66,11 +67,9 @@ func apply_slowness(slowness):
 	animated_sprite_2d.speed_scale = slowness
 	animated_sprite_2d.modulate = Color("cyan")
 	slowness_counts += 1
-	print (name + ", " + str(slowness_counts))
 
 func remove_slowness():
 	slowness_counts -= 1
-	print (name + ", " + str(slowness_counts))
 	
 	if slowness_counts <= 0:
 		speed = max_speed
@@ -86,6 +85,8 @@ func on_death():
 		$".".set_deferred("monitoring", false)
 		$RayCast2D.enabled = false
 		$"Enemy Health Bar".visible = false
+		$LightOccluder2D.visible = false
+		footsteps_audio.stop()
 		fire_rate.stop()
 		hit_timer.stop()
 		await get_tree().create_timer(2).timeout

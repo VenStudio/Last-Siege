@@ -85,7 +85,7 @@ func change_weapon(new_weapon):
 			multishot = 1
 		WeaponType.CROSSBOW:
 			bullet_speed = 1800
-			bullet_damage = 6
+			bullet_damage = 1.5
 			fire_rate.wait_time = 0.6
 			multishot = 3
 

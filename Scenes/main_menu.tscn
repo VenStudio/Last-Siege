@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c85t3s8kspsh5"]
+[gd_scene load_steps=11 format=3 uid="uid://c85t3s8kspsh5"]
 
 [ext_resource type="FontFile" uid="uid://b6btjltaqm0o5" path="res://Assets/alagard.ttf" id="1_1xtw7"]
-[ext_resource type="PackedScene" uid="uid://bhl8i7oxsnsek" path="res://Scenes/menu_button.tscn" id="3_bnwf7"]
+[ext_resource type="Texture2D" uid="uid://c6ki4hcavotfm" path="res://Assets/Sprites/UI Kit/Panel/panel-008.png" id="2_j7mxl"]
+[ext_resource type="Script" path="res://Scripts/menu_button.gd" id="3_1q88w"]
 [ext_resource type="PackedScene" uid="uid://v26ym4bavres" path="res://Scenes/first_story_cutscene.tscn" id="3_lfp4k"]
 [ext_resource type="PackedScene" uid="uid://bf7s15odfx42p" path="res://Scenes/settings_menu.tscn" id="4_5mo05"]
 
@@ -11,9 +12,33 @@ bg_color = Color(0.1848, 0.347387, 0.56, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_545o2"]
 font = ExtResource("1_1xtw7")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eoi7e"]
+texture = ExtResource("2_j7mxl")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(0.81, 0.822, 0.9, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q71qx"]
+texture = ExtResource("2_j7mxl")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ge26l"]
+texture = ExtResource("2_j7mxl")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(0.158472, 0.158472, 0.158472, 1)
+
 [node name="Main Menu" type="Camera2D"]
 
 [node name="Menu Items" type="Panel" parent="."]
+layout_direction = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,6 +61,7 @@ offset_right = -97.9999
 offset_bottom = 121.0
 grow_horizontal = 2
 scale = Vector2(5, 5)
+auto_translate = false
 text = "Last Seige"
 label_settings = SubResource("LabelSettings_545o2")
 horizontal_alignment = 1
@@ -52,9 +78,23 @@ offset_right = 852.0
 offset_bottom = -58.0
 grow_vertical = 0
 
-[node name="Menu Button" parent="Menu Items/VBoxContainer" instance=ExtResource("3_bnwf7")]
+[node name="Menu Button" type="Button" parent="Menu Items/VBoxContainer"]
+light_mask = 2
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_1xtw7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_eoi7e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q71qx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ge26l")
 text = "Play"
+script = ExtResource("3_1q88w")
 load_scene = ExtResource("3_lfp4k")
 unload_scenes = Array[NodePath]([NodePath("../../..")])
 
@@ -62,16 +102,48 @@ unload_scenes = Array[NodePath]([NodePath("../../..")])
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Menu Button2" parent="Menu Items/VBoxContainer" instance=ExtResource("3_bnwf7")]
+[node name="Menu Button2" type="Button" parent="Menu Items/VBoxContainer"]
+light_mask = 2
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_1xtw7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_eoi7e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q71qx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ge26l")
 text = "Settings"
+script = ExtResource("3_1q88w")
 load_scene = ExtResource("4_5mo05")
 
 [node name="Seperator2" type="Control" parent="Menu Items/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Menu Button3" parent="Menu Items/VBoxContainer" instance=ExtResource("3_bnwf7")]
+[node name="Menu Button3" type="Button" parent="Menu Items/VBoxContainer"]
+light_mask = 2
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_1xtw7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_eoi7e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q71qx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ge26l")
 text = "Exit"
+script = ExtResource("3_1q88w")
 functionality = 1
+
+[connection signal="pressed" from="Menu Items/VBoxContainer/Menu Button" to="Menu Items/VBoxContainer/Menu Button" method="_on_pressed"]
+[connection signal="pressed" from="Menu Items/VBoxContainer/Menu Button2" to="Menu Items/VBoxContainer/Menu Button2" method="_on_pressed"]
+[connection signal="pressed" from="Menu Items/VBoxContainer/Menu Button3" to="Menu Items/VBoxContainer/Menu Button3" method="_on_pressed"]

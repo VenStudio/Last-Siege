@@ -1,0 +1,231 @@
+# LANGUAGE translation for Last Siege for the following files:
+# res://Scenes/Game.tscn
+# res://Scenes/game_over.tscn
+# res://Scenes/main_menu.tscn
+# res://Scenes/settings_menu.tscn
+# res://Scenes/wave_manager.tscn
+# res://Scenes/first_story_cutscene.tscn
+# res://Scenes/last_story_cutscene.tscn
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Last Siege\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: Scenes/Game.tscn
+msgid "Active"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Equip "
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Bow"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Crossbow"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Castle Health is Full"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid ""
+"Heal Fortress 250/%s\n"
+" +20HP for 15G"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Castle Health"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Wave %s Complete"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Waves %s/7"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Press `Escape` to cancel"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "< SHOP"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid ">"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Shop"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Traps"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Blocks the way of the enemies"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid ""
+"Buy Stone Wall\n"
+"12G"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Deals damage to enemies walking above it"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid ""
+"Buy Ground Spikes\n"
+"24G"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Slows down any enemy in it's range"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid ""
+"Buy Freeze Crystal\n"
+"32G"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Weapons"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Your default Bow"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid ""
+"Buy Bow\n"
+"5G"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Slower, but deals much higher damage"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid ""
+"Buy Crossbow\n"
+"60G"
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Misc."
+msgstr ""
+
+#: Scenes/Game.tscn
+msgid "Start Wave %s"
+msgstr ""
+
+#: Scenes/game_over.tscn
+msgid ""
+"THE ABALISE FORTRESS\n"
+"HAS BEEN BREACHED"
+msgstr ""
+
+#: Scenes/game_over.tscn
+msgid "Retry"
+msgstr ""
+
+#: Scenes/main_menu.tscn
+msgid "Play"
+msgstr ""
+
+#: Scenes/main_menu.tscn
+#: Scenes/settings_menu.tscn
+msgid "Settings"
+msgstr ""
+
+#: Scenes/main_menu.tscn
+msgid "Exit"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Audio"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Master"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Sound Effects"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Music"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Video\n"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "FullScreen"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Language\n"
+msgstr ""
+
+#: Scenes/settings_menu.tscn
+msgid "Return"
+msgstr ""
+
+#: Scenes/first_story_cutscene.tscn
+msgid ""
+"To Abalise Fortress,\n"
+"\n"
+"The whole country has fallen; there is no city left unscathed. We have been completely invaded, our lands ravaged, our people displaced. Abalise is the last standing fortress for our country, a beacon of hope amidst the surrounding darkness. You carry the weight of our nation's fate on your shoulders.\n"
+"\n"
+"I beg you, hold your ground and fight with all your might. Use every ounce of your strength, every weapon at your disposal. You are not just defending a fortress; you are fighting for the memory of our ancestors, the safety of our families, and the future of our children. If Abalise falls, our country will be lost to history.\n"
+"\n"
+"May the strength of our forebears guide you, and may the hope of our people sustain you. Fight, for the country, for our future, for Abalise.\n"
+"\n"
+"With all my hopes and prayers,\n"
+"\n"
+"General Aldric"
+msgstr ""
+
+#: Scenes/first_story_cutscene.tscn
+msgid "Defend Abalise"
+msgstr ""
+
+#: Scenes/first_story_cutscene.tscn
+msgid "Skip >"
+msgstr ""
+
+#: Scenes/last_story_cutscene.tscn
+msgid ""
+"To Abalise Fortress,\n"
+"Bla Bla Bla...\n"
+"New kingdom here babyyyyy\n"
+"\n"
+"Thanks For Playing!\n"
+"\n"
+"General Aldric"
+msgstr ""
+
+#: Scenes/last_story_cutscene.tscn
+msgid "Exit Game"
+msgstr ""

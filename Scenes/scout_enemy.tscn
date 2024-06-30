@@ -1,0 +1,166 @@
+[gd_scene load_steps=18 format=3 uid="uid://3blg6ml7gl7"]
+
+[ext_resource type="PackedScene" uid="uid://d3d5h1lqk8u7q" path="res://Scenes/basic_enemy.tscn" id="1_nmtp5"]
+[ext_resource type="Texture2D" uid="uid://bbt5d1tuy82hs" path="res://Assets/Sprites/Enemy Brute.png" id="2_4885b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi33b"]
+atlas = ExtResource("2_4885b")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_com6i"]
+atlas = ExtResource("2_4885b")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kto8c"]
+atlas = ExtResource("2_4885b")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbl72"]
+atlas = ExtResource("2_4885b")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07boa"]
+atlas = ExtResource("2_4885b")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjo2g"]
+atlas = ExtResource("2_4885b")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iykh0"]
+atlas = ExtResource("2_4885b")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybxmr"]
+atlas = ExtResource("2_4885b")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2faby"]
+atlas = ExtResource("2_4885b")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23hyt"]
+atlas = ExtResource("2_4885b")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhfxd"]
+atlas = ExtResource("2_4885b")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj6x6"]
+atlas = ExtResource("2_4885b")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7gq8"]
+atlas = ExtResource("2_4885b")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mbaja"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi33b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_com6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kto8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbl72")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07boa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjo2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iykh0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybxmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2faby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23hyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhfxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj6x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7gq8")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dmmu6"]
+polygon = PackedVector2Array(0, 0, 0, -12, 1, 1, 0, -12, -28, -16, -28, -20, -4, -24, -4, -36, 16, -36, 16, 0)
+
+[node name="Scout Enemy" instance=ExtResource("1_nmtp5")]
+scale = Vector2(0.6, 0.6)
+health = 8
+speed = 80
+damage = 0.5
+range_variance = 10
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(3.5, -40.6667)
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0, -48.6667)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mbaja")
+animation = &"Idle"
+frame_progress = 0.748
+flip_h = true
+
+[node name="RayCast2D" parent="." index="2"]
+position = Vector2(0, -48.6667)
+target_position = Vector2(-40, 0)
+
+[node name="Fire Rate" parent="." index="3"]
+wait_time = 0.5
+
+[node name="Enemy Health Bar" parent="." index="5"]
+offset_left = -42.0
+offset_top = -92.6667
+offset_right = 258.0
+offset_bottom = -57.6667
+scale = Vector2(0.3, 0.3)
+tint_progress = Color(0, 1, 0.533333, 1)
+
+[node name="Attack Audio" parent="." index="6"]
+position = Vector2(0, -16.6667)
+volume_db = -10.0
+pitch_scale = 1.5
+
+[node name="Take Damage Audio" parent="." index="7"]
+position = Vector2(0, -16.6667)
+pitch_scale = 1.43
+
+[node name="Footsteps Audio" parent="." index="8"]
+position = Vector2(0, -16.6667)
+pitch_scale = 3.0
+
+[node name="LightOccluder2D" parent="." index="9"]
+position = Vector2(0, -16.6667)
+occluder = SubResource("OccluderPolygon2D_dmmu6")

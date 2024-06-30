@@ -28,6 +28,7 @@ texture_margin_bottom = 32.0
 modulate_color = Color(0.158472, 0.158472, 0.158472, 1)
 
 [node name="Menu Button" type="Button"]
+light_mask = 2
 custom_minimum_size = Vector2(0, 50)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)

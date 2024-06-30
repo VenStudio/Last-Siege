@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://c5qohi66ivf32"]
+[gd_scene load_steps=141 format=3 uid="uid://c5qohi66ivf32"]
 
 [ext_resource type="PackedScene" uid="uid://doanayot54nxa" path="res://Scenes/trap.tscn" id="1_bpytc"]
 [ext_resource type="Script" path="res://Scripts/Crystal.gd" id="2_s3jy2"]
@@ -944,6 +944,19 @@ animations = [{
 "speed": 120.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_n27gr"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_owvtj"]
+gradient = SubResource("Gradient_n27gr")
+width = 256
+height = 256
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+
 [node name="Crystal" instance=ExtResource("1_bpytc")]
 script = ExtResource("2_s3jy2")
 slowness = 0.65
@@ -978,6 +991,16 @@ wait_time = 2.0
 [node name="Crystal Audio" type="AudioStreamPlayer2D" parent="." index="8"]
 stream = ExtResource("6_l74iw")
 panning_strength = 0.0
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="9"]
+position = Vector2(0, -138.333)
+scale = Vector2(2, 2)
+color = Color(0.46, 1, 0.847, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 5.0
+texture = SubResource("GradientTexture2D_owvtj")
 
 [connection signal="area_entered" from="Slowness Area" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Slowness Area" to="." method="_on_slowness_area_area_exited"]

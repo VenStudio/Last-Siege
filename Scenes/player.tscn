@@ -1,30 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://cro0nuos48r64"]
+[gd_scene load_steps=10 format=3 uid="uid://cro0nuos48r64"]
 
 [ext_resource type="Texture2D" uid="uid://20qj0ud5gxo6" path="res://Assets/Sprites/Bow.png" id="1_ofroc"]
 [ext_resource type="Texture2D" uid="uid://ds57velhefot3" path="res://Assets/Sprites/Player.png" id="1_qfip8"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sa3pd"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_csk1s"]
+atlas = ExtResource("1_qfip8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51v38"]
+atlas = ExtResource("1_qfip8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mg00"]
+atlas = ExtResource("1_qfip8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm8vt"]
+atlas = ExtResource("1_qfip8")
+region = Rect2(48, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_v5513"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_qfip8")
+"texture": SubResource("AtlasTexture_csk1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51v38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mg00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm8vt")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7ojcj"]
+polygon = PackedVector2Array(-2, 8, -3, 9, -2, 9, -2, -7, 1, -7, 3, -5, 5, 8)
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_sa3pd")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v5513")
+frame_progress = 0.265835
 
 [node name="Weapon" type="Sprite2D" parent="."]
-position = Vector2(4, 0)
+position = Vector2(2, 0)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_ofroc")
 
 [node name="Fire Rate" type="Timer" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_7ojcj")
 
 [connection signal="timeout" from="Fire Rate" to="." method="_on_fire_rate_timeout"]
